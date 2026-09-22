@@ -95,21 +95,22 @@ export const Industries: React.FC = () => {
                     {ind.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-slate-200 leading-relaxed mb-4 font-normal">
+                  <p style={{ color: "#E2E8F0" }} className="text-xs sm:text-sm leading-relaxed mb-4 font-normal">
                     {ind.description}
                   </p>
                 </div>
 
                 {/* Focus Areas Badges */}
                 <div className="pt-3 border-t border-slate-800">
-                  <div className="text-[11px] uppercase font-bold text-[#F3E7C4] mb-2">
+                  <div style={{ color: "#F3E7C4" }} className="text-[11px] uppercase font-bold mb-2">
                     Core Focus
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {ind.focusAreas.map((focus, idx) => (
                       <span
                         key={idx}
-                        className="text-[11px] font-medium px-2.5 py-1 rounded-md bg-[#232733] border border-slate-700 text-slate-100"
+                        style={{ color: "#F1F5F9", backgroundColor: "#232733", borderColor: "#475569" }}
+                        className="text-[11px] font-medium px-2.5 py-1 rounded-md border"
                       >
                         {focus}
                       </span>

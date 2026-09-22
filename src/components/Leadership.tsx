@@ -23,7 +23,10 @@ export const Leadership: React.FC<LeadershipProps> = ({ onOpenSchedule }) => {
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold font-heading text-white tracking-tight leading-tight">
             Institutional Experience & <span className="gold-gradient-text">Commercial Leadership</span>
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-200 leading-relaxed font-normal">
+          <p
+            style={{ color: "#E2E8F0" }}
+            className="mt-4 text-base sm:text-lg leading-relaxed font-normal"
+          >
             Founded and directed by Jan Furcak, combining legal rigor with over a decade of international corporate execution.
           </p>
         </div>
@@ -46,10 +49,10 @@ export const Leadership: React.FC<LeadershipProps> = ({ onOpenSchedule }) => {
                     
                     {/* Top crest */}
                     <div className="w-full flex justify-between items-center z-10">
-                      <span className="text-[11px] uppercase font-black tracking-widest text-[#F3E7C4]">
+                      <span style={{ color: "#F3E7C4" }} className="text-[11px] uppercase font-black tracking-widest">
                         Dubai Silicon Oasis
                       </span>
-                      <span className="text-[10px] uppercase font-bold text-slate-200 bg-[#0B0C0E]/80 px-2 py-0.5 rounded border border-slate-700">
+                      <span style={{ color: "#FFFFFF" }} className="text-[10px] uppercase font-bold bg-[#0B0C0E]/90 px-2 py-0.5 rounded border border-slate-700">
                         FZCO
                       </span>
                     </div>
@@ -61,10 +64,10 @@ export const Leadership: React.FC<LeadershipProps> = ({ onOpenSchedule }) => {
                           JF
                         </span>
                       </div>
-                      <h4 className="text-xl sm:text-2xl font-bold font-heading text-white tracking-wide">
+                      <h4 style={{ color: "#FFFFFF" }} className="text-xl sm:text-2xl font-bold font-heading tracking-wide">
                         Jan Furcak
                       </h4>
-                      <p className="text-xs text-[#F3E7C4] font-bold tracking-wider uppercase mt-1">
+                      <p style={{ color: "#F3E7C4" }} className="text-xs font-bold tracking-wider uppercase mt-1">
                         Founder & General Manager
                       </p>
                     </div>
@@ -72,7 +75,7 @@ export const Leadership: React.FC<LeadershipProps> = ({ onOpenSchedule }) => {
                     {/* Legal Badge Pill */}
                     <div className="w-full z-10 pt-3 border-t border-[#C5A059]/30 flex items-center justify-center gap-2">
                       <Scale className="w-4 h-4 text-[#C5A059]" />
-                      <span className="text-xs text-slate-100 font-semibold">
+                      <span style={{ color: "#F1F5F9" }} className="text-xs font-semibold">
                         Legal Foundation Since 2012
                       </span>
                     </div>
@@ -81,10 +84,10 @@ export const Leadership: React.FC<LeadershipProps> = ({ onOpenSchedule }) => {
 
                 {/* Overlaid Experience Badge */}
                 <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[94%] rounded-xl bg-[#16181D] border-2 border-[#C5A059] px-3.5 py-2 text-center shadow-2xl">
-                  <div className="text-xs font-black text-[#F3E7C4] tracking-wide">
+                  <div style={{ color: "#F3E7C4" }} className="text-xs font-black tracking-wide">
                     10+ Years Executive Track Record
                   </div>
-                  <div className="text-[11px] text-slate-200 font-medium">
+                  <div style={{ color: "#E2E8F0" }} className="text-[11px] font-medium">
                     Corporate Management & Commercial Law
                   </div>
                 </div>
@@ -94,36 +97,41 @@ export const Leadership: React.FC<LeadershipProps> = ({ onOpenSchedule }) => {
             {/* Right Column: Profile & Detailed Bio */}
             <div className="lg:col-span-7 flex flex-col justify-center mt-8 lg:mt-0">
               <div className="mb-4">
-                <span className="text-xs font-bold uppercase tracking-widest text-[#C5A059] mb-1 block">
+                <span style={{ color: "#C5A059" }} className="text-xs font-bold uppercase tracking-widest mb-1 block">
                   Leadership Profile
                 </span>
-                <h3 className="text-2xl sm:text-4xl font-black font-heading text-white">
+                <h3 style={{ color: "#FFFFFF" }} className="text-2xl sm:text-4xl font-black font-heading">
                   {LEADERSHIP_PROFILE.name}
                 </h3>
-                <p className="text-sm sm:text-base text-[#F3E7C4] font-bold mt-1">
+                <p style={{ color: "#F3E7C4" }} className="text-sm sm:text-base font-bold mt-1">
                   {LEADERSHIP_PROFILE.role} • {LEADERSHIP_PROFILE.company}
                 </p>
               </div>
 
               {/* Key Badge */}
-              <div className="p-3.5 sm:p-4 rounded-xl bg-[#C5A059]/15 border border-[#C5A059]/50 text-xs sm:text-sm font-bold text-[#F3E7C4] mb-6 flex items-center gap-3 shadow-sm">
+              <div
+                style={{ backgroundColor: "rgba(197, 160, 89, 0.15)", borderColor: "rgba(197, 160, 89, 0.5)", color: "#F3E7C4" }}
+                className="p-3.5 sm:p-4 rounded-xl border text-xs sm:text-sm font-bold mb-6 flex items-center gap-3 shadow-sm"
+              >
                 <Award className="w-5 h-5 text-[#C5A059] shrink-0" />
-                <span>{LEADERSHIP_PROFILE.experienceBadge}</span>
+                <span style={{ color: "#F3E7C4" }}>{LEADERSHIP_PROFILE.experienceBadge}</span>
               </div>
 
-              {/* Bio Narrative */}
-              <div className="space-y-4 text-slate-100 text-sm sm:text-base leading-relaxed mb-6 sm:mb-8 font-normal">
+              {/* Bio Narrative with Guaranteed High-Contrast White/Silver Text */}
+              <div className="space-y-4 text-sm sm:text-base leading-relaxed mb-6 sm:mb-8 font-normal">
                 {LEADERSHIP_PROFILE.bioParagraphs.map((paragraph, idx) => (
-                  <p key={idx}>{paragraph}</p>
+                  <p key={idx} style={{ color: "#E2E8F0" }}>
+                    {paragraph}
+                  </p>
                 ))}
               </div>
 
               {/* Core Capabilities */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6 sm:mb-8 pt-4 border-t border-slate-800">
                 {LEADERSHIP_PROFILE.credentials.map((cred, idx) => (
-                  <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-100 font-medium">
+                  <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm font-medium">
                     <ShieldCheck className="w-4 h-4 text-[#C5A059] shrink-0 mt-0.5" />
-                    <span>{cred}</span>
+                    <span style={{ color: "#F1F5F9" }}>{cred}</span>
                   </div>
                 ))}
               </div>
@@ -132,13 +140,15 @@ export const Leadership: React.FC<LeadershipProps> = ({ onOpenSchedule }) => {
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
                 <button
                   onClick={onOpenSchedule}
-                  className="px-6 py-3.5 rounded-xl gold-gradient-bg text-[#0B0C0E] font-black text-xs sm:text-sm shadow-lg hover:shadow-[0_0_20px_rgba(197,160,89,0.4)] transition-all cursor-pointer text-center"
+                  style={{ backgroundColor: "#C5A059", color: "#0B0C0E" }}
+                  className="px-6 py-3.5 rounded-xl font-black text-xs sm:text-sm shadow-lg hover:shadow-[0_0_20px_rgba(197,160,89,0.4)] transition-all cursor-pointer text-center"
                 >
                   Schedule Direct Call with Jan Furcak
                 </button>
                 <a
                   href={`tel:${COMPANY_INFO.phoneRaw}`}
-                  className="px-5 py-3.5 rounded-xl border border-slate-700 bg-slate-900/60 hover:border-[#C5A059] text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-colors"
+                  style={{ color: "#FFFFFF", backgroundColor: "#1A1D24", borderColor: "#475569" }}
+                  className="px-5 py-3.5 rounded-xl border hover:border-[#C5A059] text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-colors"
                 >
                   <Phone className="w-4 h-4 text-[#C5A059]" />
                   <span>{COMPANY_INFO.phoneDisplay}</span>

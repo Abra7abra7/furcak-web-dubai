@@ -71,21 +71,21 @@ export const Approach: React.FC = () => {
                     {step.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-slate-200 leading-relaxed mb-4 font-normal">
+                  <p style={{ color: "#E2E8F0" }} className="text-xs sm:text-sm leading-relaxed mb-4 font-normal">
                     {step.description}
                   </p>
                 </div>
 
                 {/* Outputs */}
                 <div className="pt-3 border-t border-slate-800">
-                  <div className="text-[11px] uppercase font-bold text-[#F3E7C4] mb-2">
+                  <div style={{ color: "#F3E7C4" }} className="text-[11px] uppercase font-bold mb-2">
                     Key Outputs
                   </div>
                   <div className="space-y-1.5">
                     {step.keyOutputs.map((out, idx) => (
-                      <div key={idx} className="text-xs text-slate-100 flex items-center gap-2">
+                      <div key={idx} className="text-xs flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059] shrink-0" />
-                        <span className="leading-tight">{out}</span>
+                        <span style={{ color: "#F1F5F9" }} className="leading-tight font-medium">{out}</span>
                       </div>
                     ))}
                   </div>

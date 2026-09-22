@@ -123,34 +123,34 @@ export const Contact: React.FC<ContactProps> = ({ initialService }) => {
                 </div>
               </div>
 
-              <div className="space-y-3 text-xs sm:text-sm pt-3 border-t border-slate-750">
+              <div className="space-y-3 text-xs sm:text-sm pt-3 border-t border-slate-700">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between py-1.5 border-b border-slate-800 gap-1">
-                  <span className="text-slate-300 font-medium">Company Name:</span>
-                  <span className="font-bold text-white text-left sm:text-right">
+                  <span style={{ color: "#CBD5E1" }} className="font-medium">Company Name:</span>
+                  <span style={{ color: "#FFFFFF" }} className="font-bold text-left sm:text-right">
                     {COMPANY_INFO.legalName}
                   </span>
                 </div>
                 <div className="flex items-center justify-between py-1.5 border-b border-slate-800">
-                  <span className="text-slate-300 font-medium">Trade Licence No.:</span>
-                  <span className="font-mono font-black text-sm text-[#F3E7C4]">
+                  <span style={{ color: "#CBD5E1" }} className="font-medium">Trade Licence No.:</span>
+                  <span style={{ color: "#F3E7C4" }} className="font-mono font-black text-sm">
                     {COMPANY_INFO.tradeLicenceNo}
                   </span>
                 </div>
                 <div className="flex items-center justify-between py-1.5 border-b border-slate-800">
-                  <span className="text-slate-300 font-medium">Legal Status:</span>
-                  <span className="font-bold text-white">
+                  <span style={{ color: "#CBD5E1" }} className="font-medium">Legal Status:</span>
+                  <span style={{ color: "#FFFFFF" }} className="font-bold">
                     {COMPANY_INFO.legalStatus}
                   </span>
                 </div>
                 <div className="flex items-center justify-between py-1.5 border-b border-slate-800">
-                  <span className="text-slate-300 font-medium">Licensing Authority:</span>
-                  <span className="font-bold text-white">
+                  <span style={{ color: "#CBD5E1" }} className="font-medium">Licensing Authority:</span>
+                  <span style={{ color: "#FFFFFF" }} className="font-bold">
                     DIEZA
                   </span>
                 </div>
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between py-1.5 gap-1">
-                  <span className="text-slate-300 font-medium">Free Zone Jurisdiction:</span>
-                  <span className="font-bold text-[#F3E7C4]">
+                  <span style={{ color: "#CBD5E1" }} className="font-medium">Free Zone Jurisdiction:</span>
+                  <span style={{ color: "#F3E7C4" }} className="font-bold">
                     Dubai Silicon Oasis (DSO-IFZA)
                   </span>
                 </div>
