@@ -93,19 +93,19 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
                   <h3 className="text-xl font-bold font-heading text-white group-hover:text-[#F3E7C4] transition-colors mb-3 leading-snug">
                     {service.title}
                   </h3>
-                  <p className="text-slate-100 text-sm leading-relaxed mb-6 font-normal">
+                  <p style={{ color: "#E2E8F0" }} className="text-sm leading-relaxed mb-6 font-normal">
                     {service.shortDesc}
                   </p>
 
                   {/* Key Deliverables */}
                   <div className="space-y-2 pt-4 border-t border-slate-800">
-                    <div className="text-xs font-bold uppercase tracking-wider text-[#F3E7C4]">
+                    <div style={{ color: "#F3E7C4" }} className="text-xs font-bold uppercase tracking-wider">
                       Key Deliverables
                     </div>
                     {service.deliverables.slice(0, 3).map((item, idx) => (
-                      <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-200">
+                      <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm">
                         <CheckCircle className="w-4 h-4 text-[#C5A059] shrink-0 mt-0.5" />
-                        <span className="leading-snug font-normal">{item}</span>
+                        <span style={{ color: "#F1F5F9" }} className="leading-snug font-normal">{item}</span>
                       </div>
                     ))}
                   </div>

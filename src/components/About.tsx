@@ -20,7 +20,10 @@ export const About: React.FC = () => {
             Strategic Consultancy from the{" "}
             <span className="gold-gradient-text">Heart of Dubai</span>
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-200 leading-relaxed font-normal">
+          <p
+            style={{ color: "#E2E8F0" }}
+            className="mt-4 text-base sm:text-lg leading-relaxed font-normal"
+          >
             Operating from the Dubai Silicon Oasis free zone under DIEZA authority, FURCAK bridges cross-border ambition with practical Middle Eastern execution.
           </p>
         </div>
@@ -40,17 +43,29 @@ export const About: React.FC = () => {
                   <h3 className="text-lg sm:text-xl font-bold text-white font-heading">
                     Dubai Silicon Oasis (DSO-IFZA) FZCO
                   </h3>
-                  <p className="text-xs sm:text-sm text-[#F3E7C4] font-medium">
+                  <p style={{ color: "#F3E7C4" }} className="text-xs sm:text-sm font-semibold">
                     Licence No. {COMPANY_INFO.tradeLicenceNo} • DIEZA Authority
                   </p>
                 </div>
               </div>
 
-              <p className="text-slate-100 leading-relaxed text-sm sm:text-base mb-4 font-normal">
-                <strong className="text-white font-bold">FURCAK MARKETING MANAGEMENT - FZCO</strong> is an agile, multi-disciplinary corporate consultancy incorporated within Dubai Silicon Oasis. We advise and execute for B2B enterprises operating in high-complexity sectors including <strong className="text-[#F3E7C4] font-semibold">industrial manufacturing, engineering, and technology</strong>.
+              <p
+                style={{ color: "#F1F5F9" }}
+                className="leading-relaxed text-sm sm:text-base mb-4 font-normal"
+              >
+                <strong style={{ color: "#FFFFFF", fontWeight: 700 }}>
+                  FURCAK MARKETING MANAGEMENT - FZCO
+                </strong>{" "}
+                is an agile, multi-disciplinary corporate consultancy incorporated within Dubai Silicon Oasis. We advise and execute for B2B enterprises operating in high-complexity sectors including{" "}
+                <strong style={{ color: "#F3E7C4", fontWeight: 600 }}>
+                  industrial manufacturing, engineering, and technology
+                </strong>.
               </p>
 
-              <p className="text-slate-100 leading-relaxed text-sm sm:text-base mb-6 font-normal">
+              <p
+                style={{ color: "#F1F5F9" }}
+                className="leading-relaxed text-sm sm:text-base mb-6 font-normal"
+              >
                 In an era of rapid supply chain realignment and global energy shifts, Dubai serves as the preeminent hub connecting East and West. We provide our international and regional clients with the strategic clarity, regulatory confidence, and commercial execution power necessary to capture high-value market share.
               </p>
             </div>
@@ -63,9 +78,9 @@ export const About: React.FC = () => {
                 "Cross-Border Contract & Project Acumen",
                 "Direct Senior-Level Advisory",
               ].map((item, i) => (
-                <div key={i} className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-100 font-medium">
+                <div key={i} className="flex items-center gap-2.5 text-xs sm:text-sm font-medium">
                   <CheckCircle2 className="w-4 h-4 text-[#C5A059] shrink-0" />
-                  <span>{item}</span>
+                  <span style={{ color: "#F1F5F9" }}>{item}</span>
                 </div>
               ))}
             </div>
@@ -82,7 +97,7 @@ export const About: React.FC = () => {
                   <h4 className="text-base font-bold text-white font-heading mb-1">
                     Dubai Silicon Oasis (DSO)
                   </h4>
-                  <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">
+                  <p style={{ color: "#CBD5E1" }} className="text-xs sm:text-sm leading-relaxed font-normal">
                     Headquartered within DSO-IFZA, one of the UAE’s premier commercial free zones, providing clients with regulatory efficiency and world-class infrastructure.
                   </p>
                 </div>
@@ -98,7 +113,7 @@ export const About: React.FC = () => {
                   <h4 className="text-base font-bold text-white font-heading mb-1">
                     Global Trade & Investment Hub
                   </h4>
-                  <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">
+                  <p style={{ color: "#CBD5E1" }} className="text-xs sm:text-sm leading-relaxed font-normal">
                     Facilitating strategic commercial corridors between European industrial leaders, GCC infrastructure projects, and emerging Asian technology networks.
                   </p>
                 </div>
@@ -109,7 +124,7 @@ export const About: React.FC = () => {
               <div className="text-xs uppercase tracking-widest text-[#F3E7C4] font-bold mb-1">
                 FZCO Governance Standard
               </div>
-              <p className="text-xs sm:text-sm text-slate-100 font-medium">
+              <p style={{ color: "#F1F5F9" }} className="text-xs sm:text-sm font-medium">
                 Operating under rigorous compliance benchmarks overseen by the Dubai Integrated Economic Zones Authority (DIEZA).
               </p>
             </div>
@@ -136,7 +151,10 @@ export const About: React.FC = () => {
               </div>
             </div>
 
-            <p className="text-slate-100 text-sm sm:text-base leading-relaxed font-normal">
+            <p
+              style={{ color: "#E2E8F0" }}
+              className="text-sm sm:text-base leading-relaxed font-normal"
+            >
               To empower industrial, manufacturing, and technological enterprises by structuring resilient commercial bridges, orchestrating high-stake B2B market entry, and delivering actionable marketing and project development strategies that generate measurable enterprise value in the UAE and internationally.
             </p>
           </div>
@@ -159,7 +177,10 @@ export const About: React.FC = () => {
               </div>
             </div>
 
-            <p className="text-slate-100 text-sm sm:text-base leading-relaxed font-normal">
+            <p
+              style={{ color: "#E2E8F0" }}
+              className="text-sm sm:text-base leading-relaxed font-normal"
+            >
               To be recognized as the premier boutique Dubai consultancy for cross-border industrial and technology ventures—distinguished by uncompromising commercial precision, rigorous legal foundations, and enduring strategic partnerships that thrive in complex global marketplaces.
             </p>
           </div>

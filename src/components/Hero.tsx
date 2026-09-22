@@ -12,24 +12,19 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSchedule }) => {
   return (
     <section
       id="home"
-      className="relative min-h-[90vh] sm:min-h-screen pt-24 sm:pt-32 pb-16 sm:pb-24 flex flex-col justify-center items-center overflow-hidden"
+      className="relative min-h-[90vh] sm:min-h-screen pt-28 sm:pt-36 pb-16 sm:pb-24 flex flex-col justify-center items-center overflow-hidden"
     >
       {/* Ambient Lighting & Luxury Glow Background */}
       <div className="absolute inset-0 pointer-events-none -z-10">
-        {/* Central Radial Gold Mesh */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[700px] md:w-[900px] h-[340px] sm:h-[500px] rounded-full bg-gradient-to-b from-[#C5A059]/20 via-[#9B782B]/10 to-transparent blur-[90px] sm:blur-[130px]" />
-        
-        {/* Secondary highlights */}
         <div className="absolute top-12 left-6 sm:left-10 w-48 sm:w-72 h-48 sm:h-72 rounded-full bg-[#C5A059]/12 blur-[80px]" />
         <div className="absolute bottom-10 right-6 sm:right-10 w-52 sm:w-80 h-52 sm:h-80 rounded-full bg-[#F3E7C4]/10 blur-[90px]" />
-        
-        {/* Subtle geometric grid texture */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:3rem_3rem] sm:bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)] opacity-40" />
       </div>
 
       <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
         {/* Official Entity & Jurisdiction Tag */}
-        <div className="inline-flex flex-wrap items-center justify-center gap-1.5 sm:gap-3 px-3.5 sm:px-4 py-1.5 rounded-full bg-[#16181D] border border-[#C5A059]/40 backdrop-blur-md shadow-[0_0_20px_rgba(197,160,89,0.18)] mb-6 sm:mb-8">
+        <div className="inline-flex flex-wrap items-center justify-center gap-1.5 sm:gap-3 px-4 py-1.5 rounded-full bg-[#16181D] border border-[#C5A059]/50 shadow-[0_0_20px_rgba(197,160,89,0.2)] mb-8">
           <span className="flex h-2 w-2 relative">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C5A059] opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#F3E7C4]"></span>
@@ -53,36 +48,39 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSchedule }) => {
         </h1>
 
         {/* Subtext */}
-        <p className="text-base sm:text-lg md:text-xl text-slate-100 max-w-3xl leading-relaxed mb-8 sm:mb-10 font-normal">
+        <p className="text-base sm:text-lg md:text-xl text-slate-100 max-w-3xl leading-relaxed mb-10 font-normal">
           <strong className="text-white font-bold">{COMPANY_INFO.legalName}</strong> is a Dubai-based business consultancy providing Marketing Management, Business Development and Project Development Consultancy services.
         </p>
 
-        {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full max-w-md sm:max-w-none mb-12 sm:mb-16">
-          {/* Explore Services */}
+        {/* Action Buttons with 100% Guaranteed High-Contrast Colors */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3.5 sm:gap-5 w-full max-w-lg mb-14">
+          {/* Explore Services (Gold Gradient Button) */}
           <a
             href="#services"
-            className="inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl gold-gradient-bg text-[#0B0C0E] font-black text-sm sm:text-base tracking-wide shadow-[0_4px_25px_rgba(197,160,89,0.35)] hover:shadow-[0_6px_35px_rgba(197,160,89,0.5)] active:scale-[0.98] transition-all"
+            style={{ backgroundColor: "#C5A059", color: "#0B0C0E" }}
+            className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl font-black text-sm sm:text-base tracking-wide shadow-[0_4px_25px_rgba(197,160,89,0.4)] hover:shadow-[0_6px_35px_rgba(197,160,89,0.55)] hover:scale-[1.02] active:scale-[0.98] transition-all"
           >
-            <span>Explore Services</span>
+            <span style={{ color: "#0B0C0E", fontWeight: 800 }}>Explore Services</span>
             <ArrowRight className="w-4 h-4 text-[#0B0C0E]" />
           </a>
 
-          {/* Contact Us */}
+          {/* Contact Us (High-Contrast White Text Button) */}
           <a
             href="#contact"
-            className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl glass-panel text-white hover:text-[#F3E7C4] hover:border-[#C5A059] font-bold text-sm sm:text-base tracking-wide active:scale-[0.98] transition-all"
+            style={{ color: "#FFFFFF", backgroundColor: "#16181D", borderColor: "#C5A059" }}
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl border-2 hover:bg-[#C5A059]/15 font-bold text-sm sm:text-base tracking-wide transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg"
           >
-            <span>Contact Us</span>
+            <span style={{ color: "#FFFFFF", fontWeight: 700 }}>Contact Us</span>
           </a>
 
-          {/* Schedule Direct CTA */}
+          {/* Schedule Call (Direct Action) */}
           <button
             onClick={onOpenSchedule}
-            className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl border border-slate-750 hover:border-[#C5A059] bg-[#16181D]/90 text-[#F3E7C4] text-sm sm:text-base font-bold transition-all active:scale-[0.98] cursor-pointer"
+            style={{ color: "#F3E7C4", backgroundColor: "#1A1D24", borderColor: "rgba(197, 160, 89, 0.6)" }}
+            className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl border-2 hover:bg-[#C5A059]/20 font-bold text-sm sm:text-base transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-lg"
           >
             <PhoneCall className="w-4 h-4 text-[#C5A059]" />
-            <span>Schedule Call</span>
+            <span style={{ color: "#F3E7C4", fontWeight: 700 }}>Schedule Call</span>
           </button>
         </div>
 
@@ -95,7 +93,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSchedule }) => {
             {COMPANY_INFO.trustBadges.map((badge, idx) => (
               <div
                 key={idx}
-                className="flex items-center justify-start sm:justify-center gap-3.5 p-3.5 sm:p-4 rounded-xl bg-[#16181D] border border-[#C5A059]/30 hover:border-[#C5A059]/60 transition-colors shadow-sm"
+                className="flex items-center justify-start sm:justify-center gap-3.5 p-3.5 sm:p-4 rounded-xl bg-[#16181D] border border-[#C5A059]/35 hover:border-[#C5A059]/60 transition-colors shadow-sm"
               >
                 <div className="w-9 h-9 rounded-lg bg-[#C5A059]/20 border border-[#C5A059]/40 flex items-center justify-center text-[#F3E7C4] shrink-0">
                   {idx === 0 ? (

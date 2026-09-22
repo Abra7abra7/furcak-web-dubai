@@ -66,11 +66,8 @@ export const COMPANY_INFO = {
 };
 
 export const NAV_LINKS = [
-  { name: "Home", href: "#home" },
-  { name: "About Us", href: "#about" },
+  { name: "About", href: "#about" },
   { name: "Services", href: "#services" },
-  { name: "Industries", href: "#industries" },
-  { name: "Approach", href: "#approach" },
   { name: "Leadership", href: "#leadership" },
   { name: "Contact", href: "#contact" },
 ];

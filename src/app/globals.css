@@ -9,7 +9,6 @@
   --gold-light: #f3e7c4;
   --gold-primary: #c5a059;
   --gold-dark: #9b782b;
-  --gold-muted: rgba(197, 160, 89, 0.15);
   --font-heading: 'Outfit', sans-serif;
   --font-body: 'Inter', sans-serif;
 }
@@ -32,8 +31,8 @@ html {
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: #0b0c0e;
+  color: #f8fafc;
   font-family: var(--font-body);
   overflow-x: hidden;
   width: 100%;
@@ -41,6 +40,27 @@ body {
   -webkit-text-size-adjust: 100%;
   selection-background-color: #c5a059;
   selection-color: #0b0c0e;
+}
+
+/* Explicit Bulletproof Text Colors */
+.text-gold-light {
+  color: #f3e7c4 !important;
+}
+
+.text-gold-primary {
+  color: #c5a059 !important;
+}
+
+.text-white-pure {
+  color: #ffffff !important;
+}
+
+.text-body-light {
+  color: #e2e8f0 !important;
+}
+
+.text-body-muted {
+  color: #cbd5e1 !important;
 }
 
 /* Typography Helpers */
@@ -54,42 +74,41 @@ h1, h2, h3, h4, .font-heading {
   background: linear-gradient(135deg, #ffffff 0%, #f3e7c4 25%, #c5a059 65%, #d4af37 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 
 .gold-gradient-bg {
-  background: linear-gradient(135deg, #f3e7c4 0%, #c5a059 50%, #9b782b 100%);
-}
-
-.gold-gradient-border {
-  border-image: linear-gradient(135deg, #f3e7c4 0%, #c5a059 50%, #9b782b 100%) 1;
+  background: linear-gradient(135deg, #f3e7c4 0%, #c5a059 50%, #9b782b 100%) !important;
+  color: #0b0c0e !important;
 }
 
 /* High-Visibility Card Styles */
 .furcak-card {
   background: #16181d;
-  border: 1px solid var(--card-border);
+  border: 1px solid rgba(197, 160, 89, 0.25);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .furcak-card:hover {
-  border-color: var(--card-border-hover);
-  box-shadow: 0 12px 36px -8px rgba(197, 160, 89, 0.2);
+  border-color: rgba(197, 160, 89, 0.6);
+  box-shadow: 0 12px 36px -8px rgba(197, 160, 89, 0.25);
 }
 
 .glass-panel {
-  background: rgba(22, 24, 29, 0.88);
+  background: rgba(22, 24, 29, 0.9) !important;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(197, 160, 89, 0.28);
+  border: 1px solid rgba(197, 160, 89, 0.35) !important;
+  color: #ffffff !important;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
 }
 
 .glass-nav {
-  background: rgba(11, 12, 14, 0.92);
+  background: rgba(11, 12, 14, 0.94);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+  border-bottom: 1px solid rgba(197, 160, 89, 0.25);
 }
 
 /* Ambient Radial Glows */
