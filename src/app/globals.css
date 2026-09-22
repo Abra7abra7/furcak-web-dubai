@@ -1,26 +1,141 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0b0c0e;
+  --foreground: #f8fafc;
+  --card-bg: #16181d;
+  --card-border: rgba(197, 160, 89, 0.25);
+  --card-border-hover: rgba(197, 160, 89, 0.6);
+  --gold-light: #f3e7c4;
+  --gold-primary: #c5a059;
+  --gold-dark: #9b782b;
+  --gold-muted: rgba(197, 160, 89, 0.15);
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --color-base: #0b0c0e;
+  --color-card: #16181d;
+  --color-gold-light: #f3e7c4;
+  --color-gold-primary: #c5a059;
+  --color-gold-dark: #9b782b;
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+  -webkit-text-size-adjust: 100%;
+  selection-background-color: #c5a059;
+  selection-color: #0b0c0e;
+}
+
+/* Typography Helpers */
+h1, h2, h3, h4, .font-heading {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+/* High-Contrast Gold Text */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #f3e7c4 25%, #c5a059 65%, #d4af37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-gradient-bg {
+  background: linear-gradient(135deg, #f3e7c4 0%, #c5a059 50%, #9b782b 100%);
+}
+
+.gold-gradient-border {
+  border-image: linear-gradient(135deg, #f3e7c4 0%, #c5a059 50%, #9b782b 100%) 1;
+}
+
+/* High-Visibility Card Styles */
+.furcak-card {
+  background: #16181d;
+  border: 1px solid var(--card-border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.furcak-card:hover {
+  border-color: var(--card-border-hover);
+  box-shadow: 0 12px 36px -8px rgba(197, 160, 89, 0.2);
+}
+
+.glass-panel {
+  background: rgba(22, 24, 29, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(197, 160, 89, 0.28);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+.glass-nav {
+  background: rgba(11, 12, 14, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+}
+
+/* Ambient Radial Glows */
+.gold-glow-radial {
+  background: radial-gradient(circle at 50% 30%, rgba(197, 160, 89, 0.16) 0%, rgba(11, 12, 14, 0) 70%);
+}
+
+.gold-glow-subtle {
+  background: radial-gradient(circle, rgba(197, 160, 89, 0.1) 0%, rgba(11, 12, 14, 0) 65%);
+}
+
+/* Custom Luxury Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0c0e;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2e38;
+  border-radius: 4px;
+  border: 1px solid rgba(197, 160, 89, 0.3);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c5a059;
+}
+
+/* Pulse animation for WhatsApp badge */
+@keyframes subtle-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.9;
+  }
+}
+
+.animate-subtle-pulse {
+  animation: subtle-pulse 2.5s infinite ease-in-out;
+}
+
+/* Prevent auto zoom on iOS inputs */
+@media screen and (max-width: 768px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
 }

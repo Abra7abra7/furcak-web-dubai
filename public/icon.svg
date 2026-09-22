@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <defs>
+    <linearGradient id="furcakGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F3E7C4" />
+      <stop offset="50%" stop-color="#C5A059" />
+      <stop offset="100%" stop-color="#9B782B" />
+    </linearGradient>
+    <linearGradient id="furcakDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A1C23" />
+      <stop offset="100%" stop-color="#0B0C0E" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Outer Rounded Shield / Diamond Base -->
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#furcakDark)" stroke="url(#furcakGold)" stroke-width="1.5" />
+  
+  <!-- Architectural Geometric F Emblem -->
+  <!-- Vertical Spine -->
+  <path d="M20 16 L20 48 L26 48 L26 22 L44 22 L44 16 Z" fill="url(#furcakGold)" />
+  
+  <!-- Middle Crossbar & Angle Cut -->
+  <path d="M26 30 L40 30 L40 35 L26 35 Z" fill="url(#furcakGold)" />
+  
+  <!-- Modern Geometric Accent Diamond in top right -->
+  <polygon points="46,16 50,20 46,24 42,20" fill="url(#furcakGold)" opacity="0.9" />
+</svg>
