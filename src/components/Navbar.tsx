@@ -35,9 +35,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSchedule }) => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Left: Logo */}
-        <Link href="/" className="inline-flex items-center">
-          <FurcakLogo size="md" />
-        </Link>
+        <FurcakLogo size="md" />
 
         {/* Center: Disciplined Desktop Navigation */}
         <nav className="hidden lg:flex items-center space-x-7 xl:space-x-8">

@@ -7,17 +7,32 @@ Tento dokument slúži ako prehľadný zoznam krokov pre spustenie do živej pre
 ## 1. Aktivácia Kontaktného Formulára (Email)
 Web má pripravenú integráciu na bezplatnú službu **Web3Forms**:
 1. Otvorte [https://web3forms.com](https://web3forms.com).
-2. Zadajte email, na ktorý majú dopyty prichádzať (napr. `info@furcak.com` alebo Janov email).
+2. Zadajte email klienta (`jan.furcak@gmail.com` alebo `jan@fmm-fzco.com`).
 3. Do emailu príde **Access Key**.
-4. Vo Verceli (alebo v lokálnom súbore `.env.local`) pridajte:
+4. V Cloudflare Pages (alebo v lokálnom súbore `.env.local`) pridajte:
    ```env
    NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY=vas_vygenerovany_kluc
    ```
-5. Každý odoslaný formulár z webu bude okamžite preposlaný na zadaný email s údajmi o klientovi a možnosti priamej odpovede.
+5. Každý odoslaný formulár z webu bude okamžite preposlaný na zadaný email s údajmi o klientovi a možnosťou priamej odpovede.
 
 ---
 
-## 2. WhatsApp Integrácia
+## 2. Nastavenie Cloudflare Email Routing (pre doménu fmm-fzco.com)
+Keďže klient zakúpil doménu **`fmm-fzco.com`** priamo na Cloudflare:
+1. V Cloudflare Dashboarde prejdite na doménu **`fmm-fzco.com`**.
+2. V ľavom menu otvorte **Email** -> **Email Routing**.
+3. Kliknite na **Get Started** a potvrďte pridanie DNS záznamov (**Add records automatically**).
+4. V záložke **Destination addresses**:
+   - Pridajte cieľovú adresu: `jan.furcak@gmail.com`.
+   - Na tento Gmail príde verifikačný e-mail od Cloudflare — klient ho potvrdí kliknutím na odkaz.
+5. V záložke **Routing rules** vytvorte pravidlá:
+   - `jan@fmm-fzco.com` -> Send to: `jan.furcak@gmail.com`
+   - `info@fmm-fzco.com` -> Send to: `jan.furcak@gmail.com`
+6. Výsledok: Klient má reprezentatívny firemný e-mail na novej doméne a všetky správy mu bezplatne chodia priamo do Gmailu!
+
+---
+
+## 3. WhatsApp Integrácia
 - Odkazy na webe smerujú priamo na:
   `https://wa.me/971505395412?text=...`
 - Na čísle **+971 50 539 5412** stačí mať aktívnu aplikáciu WhatsApp / WhatsApp Business.
@@ -25,18 +40,18 @@ Web má pripravenú integráciu na bezplatnú službu **Web3Forms**:
 
 ---
 
-## 3. Nasadenie na Cloudflare Pages (Hosting) & Vlastná Doména
-1. Prihláste sa do [Cloudflare Dashboard](https://dash.cloudflare.com) a prejdite do sekcie **Compute (Workers & Pages)** -> **Create application** -> **Pages** -> **Connect to Git**.
+## 4. Nasadenie na Cloudflare Pages (Hosting) pre fmm-fzco.com
+1. V Cloudflare Dashboarde prejdite do sekcie **Workers & Pages** -> **Create application** -> **Pages** -> **Connect to Git**.
 2. Vyberte repozitár `furcak-web-dubai`.
 3. Nastavenia buildu:
-   - **Framework preset:** `Next.js` (alebo `None`)
-   - **Build command:** `npx @cloudflare/next-on-pages` alebo `npm run build`
-   - **Build output directory:** `.vercel/output/static` (pri next-on-pages) alebo `out` (pri statickom exporte)
+   - **Framework preset:** `Next.js`
+   - **Build command:** `npx @cloudflare/next-on-pages` (alebo `npm run build`)
+   - **Build output directory:** `.vercel/output/static` (alebo `out`)
 4. V sekcii **Environment Variables** pridajte:
    - `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` = váš kľúč z web3forms.com
-   - `NODE_VERSION` = `20` alebo `22`
+   - `NODE_VERSION` = `20`
 5. Kliknite na **Save and Deploy**.
-6. V záložke **Custom domains** priraďte vlastnú doménu (napr. `furcak.com` alebo `furcak.ae`) s automatickým bezplatným SSL certifikátom a ochranou Cloudflare.
+6. V záložke **Custom domains** pridajte doménu **`fmm-fzco.com`** a **`www.fmm-fzco.com`**. Cloudflare automaticky vygeneruje SSL certifikát a prepojí DNS.
 
 ---
 

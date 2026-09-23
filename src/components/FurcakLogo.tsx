@@ -5,12 +5,14 @@ interface FurcakLogoProps {
   className?: string;
   showTagline?: boolean;
   size?: "sm" | "md" | "lg";
+  href?: string;
 }
 
 export const FurcakLogo: React.FC<FurcakLogoProps> = ({
   className = "",
   showTagline = true,
   size = "md",
+  href = "/",
 }) => {
   const emblemSizes = {
     sm: "w-8 h-8",
@@ -32,7 +34,7 @@ export const FurcakLogo: React.FC<FurcakLogoProps> = ({
 
   return (
     <Link
-      href="#home"
+      href={href}
       className={`inline-flex items-center gap-2.5 sm:gap-3.5 group focus:outline-none ${className}`}
       aria-label="FURCAK MARKETING MANAGEMENT - FZCO Home"
     >

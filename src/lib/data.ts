@@ -42,8 +42,9 @@ export const COMPANY_INFO = {
   premisesAddress: "Premises No. DSO-IFZA, IFZA Properties, Dubai Silicon Oasis, Dubai, UAE",
   phoneDisplay: "+971 50 539 5412",
   phoneRaw: "+971505395412",
-  emailGeneral: "info@furcak.com",
-  contactEmail: "jan@furcak.com",
+  websiteUrl: "https://fmm-fzco.com",
+  emailGeneral: "info@fmm-fzco.com",
+  contactEmail: "jan@fmm-fzco.com",
   
   whatsappNumber: "+971505395412",
   whatsappUrl:

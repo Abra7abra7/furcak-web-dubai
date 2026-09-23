@@ -5,6 +5,7 @@ import { COMPANY_INFO, SERVICES_DATA } from "@/lib/data";
 import {
   MapPin,
   Phone,
+  Mail,
   ShieldCheck,
   Send,
   CheckCircle2,
@@ -188,6 +189,27 @@ export const Contact: React.FC<ContactProps> = ({ initialService }) => {
                   </a>
                   <p className="text-xs text-slate-300 mt-0.5 font-normal">
                     Direct line to General Management (Gulf Standard Time)
+                  </p>
+                </div>
+              </div>
+
+              {/* Corporate Email */}
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-lg bg-[#181C24] border border-[#C8A55E]/30 flex items-center justify-center text-[#C8A55E] shrink-0 mt-0.5">
+                  <Mail className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-[11px] uppercase font-semibold text-[#C8A55E] tracking-wider mb-1">
+                    Corporate Email
+                  </div>
+                  <a
+                    href={`mailto:${COMPANY_INFO.contactEmail}`}
+                    className="text-base sm:text-lg font-bold text-white hover:text-[#EFE4CA] transition-colors block"
+                  >
+                    {COMPANY_INFO.contactEmail}
+                  </a>
+                  <p className="text-xs text-slate-300 mt-0.5 font-normal">
+                    General inquiries: <a href={`mailto:${COMPANY_INFO.emailGeneral}`} className="text-[#EFE4CA] hover:underline font-medium">{COMPANY_INFO.emailGeneral}</a>
                   </p>
                 </div>
               </div>

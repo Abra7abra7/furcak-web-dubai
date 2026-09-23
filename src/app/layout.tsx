@@ -23,7 +23,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://furcak.com"),
+  metadataBase: new URL("https://fmm-fzco.com"),
   title: "FURCAK MARKETING MANAGEMENT - FZCO | Dubai Business Consultancy",
   description:
     "FURCAK MARKETING MANAGEMENT - FZCO is a Dubai-based consultancy licensed by DIEZA (DSO-IFZA). Delivering Marketing Management, Business Development, and Project Development Consultancy across industrial, engineering, and technology sectors.",
@@ -39,16 +39,16 @@ export const metadata: Metadata = {
     "Cross-Border Commercial Advisory",
     "DSO-IFZA Consultancy",
   ],
-  authors: [{ name: "Jan Furcak", url: "https://furcak.com" }],
+  authors: [{ name: "Jan Furcak", url: "https://fmm-fzco.com" }],
   creator: "FURCAK MARKETING MANAGEMENT - FZCO",
   publisher: "FURCAK MARKETING MANAGEMENT - FZCO",
   alternates: {
-    canonical: "https://furcak.com",
+    canonical: "https://fmm-fzco.com",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://furcak.com",
+    url: "https://fmm-fzco.com",
     siteName: "FURCAK MARKETING MANAGEMENT - FZCO",
     title: "FURCAK MARKETING MANAGEMENT - FZCO | Dubai Consultancy",
     description:
