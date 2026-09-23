@@ -1,0 +1,232 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "FURCAK Web Dubai Architecture",
+    "output": "architecture-diagram.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/Abra7abra7/furcak-web-dubai.git",
+      "provider": "github",
+      "link_mode": "local-only",
+      "revision": "f5a09dd68cf97674af97900ec598ba4a1606cb8d"
+    },
+    "views": [
+      {
+        "id": "full-flow",
+        "label": "Client to Edge Request Flow",
+        "focus": ["visitors", "edge", "app", "pages"],
+        "note": "Follow client requests through Cloudflare Edge to pre-rendered Next.js pages."
+      },
+      {
+        "id": "mandate-inquiry",
+        "label": "Executive Mandate Submission",
+        "focus": ["visitors", "interactive", "forms_api", "wa_api"],
+        "note": "Client interactions with booking modal, Web3Forms API, and WhatsApp."
+      },
+      {
+        "id": "governance",
+        "label": "Institutional Governance",
+        "focus": ["app", "content", "dieza"],
+        "note": "DIEZA DSO-IFZA regulatory compliance and corporate data registry."
+      }
+    ]
+  },
+  "components": [
+    {
+      "id": "visitors",
+      "type": "external",
+      "label": "Institutional Clients",
+      "sublabel": "EU / GCC Founders & Boards",
+      "pos": [40, 230],
+      "size": [140, 64]
+    },
+    {
+      "id": "edge",
+      "type": "cloud",
+      "brand": "cloudflare",
+      "label": "Cloudflare Pages",
+      "sublabel": "Edge CDN & DDoS Shield",
+      "sources": [
+        { "path": "DEPLOYMENT_NOTES.md", "line": 28, "label": "Cloudflare Pages deployment" }
+      ],
+      "pos": [280, 230],
+      "size": [140, 64]
+    },
+    {
+      "id": "app",
+      "type": "frontend",
+      "brand": "next-js",
+      "label": "Next.js 16 App Router",
+      "sublabel": "React 19 & Turbopack (v16.3.6)",
+      "sources": [
+        { "path": "package.json", "line": 13, "label": "Next.js 16.3.6 dependency" },
+        { "path": "src/app/layout.tsx", "line": 1, "label": "Root layout" }
+      ],
+      "pos": [510, 230],
+      "size": [150, 64]
+    },
+    {
+      "id": "pages",
+      "type": "frontend",
+      "label": "Static Route Subpages",
+      "sublabel": "Services, About, Sectors",
+      "sources": [
+        { "path": "src/app/page.tsx", "line": 1, "label": "Home Portal" }
+      ],
+      "pos": [750, 130],
+      "size": [150, 64]
+    },
+    {
+      "id": "interactive",
+      "type": "frontend",
+      "brand": "react",
+      "label": "Client UI Modules",
+      "sublabel": "ScheduleModal, Contact",
+      "sources": [
+        { "path": "src/components/ScheduleModal.tsx", "line": 1, "label": "Schedule Modal" },
+        { "path": "src/components/Contact.tsx", "line": 1, "label": "Contact component" }
+      ],
+      "pos": [750, 270],
+      "size": [150, 64]
+    },
+    {
+      "id": "content",
+      "type": "database",
+      "label": "Static Data Registry",
+      "sublabel": "Pillars, Roadmap, Credentials",
+      "sources": [
+        { "path": "src/lib/data.ts", "line": 1, "label": "Corporate data registry" }
+      ],
+      "pos": [980, 130],
+      "size": [150, 64]
+    },
+    {
+      "id": "forms_api",
+      "type": "external",
+      "label": "Web3Forms API",
+      "sublabel": "Mandate Email Dispatch",
+      "sources": [
+        { "path": "src/components/Contact.tsx", "line": 41, "label": "Web3Forms submission" }
+      ],
+      "pos": [980, 270],
+      "size": [150, 64]
+    },
+    {
+      "id": "wa_api",
+      "type": "external",
+      "brand": "whatsapp",
+      "label": "WhatsApp Concierge",
+      "sublabel": "+971 50 539 5412 Direct",
+      "sources": [
+        { "path": "src/components/WhatsAppWidget.tsx", "line": 1, "label": "WhatsApp concierge" }
+      ],
+      "pos": [980, 400],
+      "size": [150, 64]
+    },
+    {
+      "id": "dieza",
+      "type": "security",
+      "label": "DIEZA / DSO-IFZA",
+      "sublabel": "Licence No. 89324 Audit",
+      "pos": [510, 400],
+      "size": [150, 64]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Cloudflare Pages Edge & App Infrastructure",
+      "wraps": ["edge", "app", "pages", "interactive", "content"]
+    }
+  ],
+  "connections": [
+    {
+      "id": "conn-visitors-edge",
+      "from": "visitors",
+      "to": "edge",
+      "label": "HTTPS :443",
+      "variant": "emphasis"
+    },
+    {
+      "id": "conn-edge-app",
+      "from": "edge",
+      "to": "app",
+      "label": "Edge Routing"
+    },
+    {
+      "id": "conn-app-pages",
+      "from": "app",
+      "to": "pages",
+      "label": "App Router",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "conn-app-interactive",
+      "from": "app",
+      "to": "interactive",
+      "label": "Hydration",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "conn-pages-content",
+      "from": "pages",
+      "to": "content",
+      "label": "Static Imports"
+    },
+    {
+      "id": "conn-interactive-forms",
+      "from": "interactive",
+      "to": "forms_api",
+      "label": "POST /submit",
+      "variant": "dashed"
+    },
+    {
+      "id": "conn-interactive-wa",
+      "from": "interactive",
+      "to": "wa_api",
+      "label": "wa.me direct",
+      "fromSide": "bottom",
+      "toSide": "left"
+    },
+    {
+      "id": "conn-app-dieza",
+      "from": "app",
+      "to": "dieza",
+      "label": "Regulatory Disclosures",
+      "variant": "security",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 24
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Edge & Delivery",
+      "items": [
+        "Cloudflare Pages provides global Anycast CDN, DDoS protection, and SSL termination",
+        "Multi-page static pre-rendering delivers sub-millisecond edge response times across GCC & EU"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Application Core",
+      "items": [
+        "Next.js 16.3.6 (latest stable) App Router with React 19 and Turbopack compiler",
+        "Modular subpages for Services, Corporate Profile, Industries, Approach, and Leadership"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Integrations & Governance",
+      "items": [
+        "Direct boardroom mandate dispatch via Web3Forms API gateway",
+        "Instant executive concierge channel via verified WhatsApp routing",
+        "Institutional compliance under DIEZA DSO-IFZA Licence No. 89324"
+      ]
+    }
+  ]
+}
