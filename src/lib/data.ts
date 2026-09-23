@@ -44,7 +44,7 @@ export const COMPANY_INFO = {
   phoneRaw: "+971505395412",
   websiteUrl: "https://fmm-fzco.com",
   emailGeneral: "info@fmm-fzco.com",
-  contactEmail: "jan@fmm-fzco.com",
+  contactEmail: "info@fmm-fzco.com",
   
   whatsappNumber: "+971505395412",
   whatsappUrl:

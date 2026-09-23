@@ -203,13 +203,13 @@ export const Contact: React.FC<ContactProps> = ({ initialService }) => {
                     Corporate Email
                   </div>
                   <a
-                    href={`mailto:${COMPANY_INFO.contactEmail}`}
+                    href={`mailto:${COMPANY_INFO.emailGeneral}`}
                     className="text-base sm:text-lg font-bold text-white hover:text-[#EFE4CA] transition-colors block"
                   >
-                    {COMPANY_INFO.contactEmail}
+                    {COMPANY_INFO.emailGeneral}
                   </a>
                   <p className="text-xs text-slate-300 mt-0.5 font-normal">
-                    General inquiries: <a href={`mailto:${COMPANY_INFO.emailGeneral}`} className="text-[#EFE4CA] hover:underline font-medium">{COMPANY_INFO.emailGeneral}</a>
+                    Official inquiries & strategic partnership mandates
                   </p>
                 </div>
               </div>

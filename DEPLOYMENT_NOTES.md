@@ -25,10 +25,10 @@ Keďže klient zakúpil doménu **`fmm-fzco.com`** priamo na Cloudflare:
 4. V záložke **Destination addresses**:
    - Pridajte cieľovú adresu: `jan.furcak@gmail.com`.
    - Na tento Gmail príde verifikačný e-mail od Cloudflare — klient ho potvrdí kliknutím na odkaz.
-5. V záložke **Routing rules** vytvorte pravidlá:
-   - `jan@fmm-fzco.com` -> Send to: `jan.furcak@gmail.com`
-   - `info@fmm-fzco.com` -> Send to: `jan.furcak@gmail.com`
-6. Výsledok: Klient má reprezentatívny firemný e-mail na novej doméne a všetky správy mu bezplatne chodia priamo do Gmailu!
+5. V záložke **Routing rules**:
+   - Vytvorte pravidlo pre **`info@fmm-fzco.com`** -> Send to: `jan.furcak@gmail.com`.
+   - V sekcii **Catch-all rule** kliknite na **Edit** -> Action: **Send to an email** -> `jan.furcak@gmail.com`. (Vďaka tomu čokoľvek zaslané na doménu `@fmm-fzco.com` príde klientovi do Gmailu).
+6. Výsledok: Na webe je jednotný oficiálny e-mail `info@fmm-fzco.com` a všetky správy bezplatne pristanú v Gmaile klienta!
 
 ---
 
