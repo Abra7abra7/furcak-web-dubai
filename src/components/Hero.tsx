@@ -6,10 +6,17 @@ import { ArrowRight, ShieldCheck, Award, Building2, PhoneCall } from "lucide-rea
 import { COMPANY_INFO } from "@/lib/data";
 
 interface HeroProps {
-  onOpenSchedule: () => void;
+  onOpenSchedule?: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenSchedule }) => {
+  const handleScheduleClick = () => {
+    if (onOpenSchedule) {
+      onOpenSchedule();
+    } else {
+      window.dispatchEvent(new CustomEvent("open-schedule"));
+    }
+  };
   return (
     <section
       id="home"
@@ -58,7 +65,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSchedule }) => {
 
           {/* Schedule Direct Consultation */}
           <button
-            onClick={onOpenSchedule}
+            onClick={handleScheduleClick}
             className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-[#14171F] hover:bg-[#1A1F29] text-[#EFE4CA] border border-[#C8A55E]/40 hover:border-[#C8A55E] font-semibold text-sm sm:text-base transition-all active:scale-[0.99] cursor-pointer shadow-sm"
           >
             <PhoneCall className="w-4 h-4 text-[#C8A55E]" />

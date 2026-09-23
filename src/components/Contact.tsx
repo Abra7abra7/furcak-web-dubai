@@ -60,7 +60,7 @@ export const Contact: React.FC<ContactProps> = ({ initialService }) => {
           setStatus("error");
           setResponseMsg(data.message || "Submission encountered an issue.");
         }
-      } catch (err) {
+      } catch {
         setStatus("error");
         setResponseMsg("Network error. Please reach us via WhatsApp or direct phone.");
       }

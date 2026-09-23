@@ -1,6 +1,5 @@
 "use client";
 
-import React, { useState } from "react";
 import Link from "next/link";
 import { PageShell } from "@/components/PageShell";
 import { Hero } from "@/components/Hero";
@@ -15,22 +14,18 @@ import {
   Globe2,
   Handshake,
   Briefcase,
-  Search,
-  Users,
-  GitMerge,
-  PhoneCall,
   Calendar,
   MessageCircle,
 } from "lucide-react";
-import { ScheduleModal } from "@/components/ScheduleModal";
 
 export default function Home() {
-  const [scheduleOpen, setScheduleOpen] = useState(false);
-
+  const handleOpenSchedule = () => {
+    window.dispatchEvent(new CustomEvent("open-schedule"));
+  };
   return (
     <PageShell noTopPadding={true}>
       {/* 1. Master Architectural Hero */}
-      <Hero onOpenSchedule={() => setScheduleOpen(true)} />
+      <Hero />
 
       {/* 2. Corporate Profile Executive Overview */}
       <section className="py-20 sm:py-24 relative overflow-hidden bg-[#090B0E] border-t border-slate-800/80">
@@ -360,7 +355,7 @@ export default function Home() {
                     <ArrowRight className="w-4 h-4 text-[#090B0E]" />
                   </Link>
                   <button
-                    onClick={() => setScheduleOpen(true)}
+                    onClick={handleOpenSchedule}
                     className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-[#12151B] hover:bg-[#1A1F29] border border-[#C8A55E]/40 text-[#EFE4CA] font-semibold text-xs sm:text-sm transition-all cursor-pointer"
                   >
                     <Calendar className="w-4 h-4 text-[#C8A55E]" />
@@ -409,11 +404,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Schedule Consultation Modal */}
-      <ScheduleModal
-        isOpen={scheduleOpen}
-        onClose={() => setScheduleOpen(false)}
-      />
     </PageShell>
   );
 }

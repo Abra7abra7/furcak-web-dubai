@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { PageShell } from "@/components/PageShell";
 import { PageHeader } from "@/components/PageHeader";
 import { About } from "@/components/About";
-import { COMPANY_INFO } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "About Us | FURCAK MARKETING MANAGEMENT - FZCO",

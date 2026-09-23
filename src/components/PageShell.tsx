@@ -19,6 +19,12 @@ export const PageShell: React.FC<PageShellProps> = ({
   const [scheduleOpen, setScheduleOpen] = useState(false);
   const [legalModalType, setLegalModalType] = useState<"privacy" | "terms" | null>(null);
 
+  React.useEffect(() => {
+    const handler = () => setScheduleOpen(true);
+    window.addEventListener("open-schedule", handler);
+    return () => window.removeEventListener("open-schedule", handler);
+  }, []);
+
   return (
     <div className="relative min-h-screen bg-[#090B0E] text-[#F8FAFC] flex flex-col justify-between selection:bg-[#C8A55E] selection:text-[#090B0E]">
       {/* Universal Executive Navbar */}
