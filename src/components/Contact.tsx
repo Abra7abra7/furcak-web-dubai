@@ -35,9 +35,7 @@ export const Contact: React.FC<ContactProps> = ({ initialService }) => {
     e.preventDefault();
     setStatus("submitting");
 
-    const accessKey =
-      process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ||
-      "7cc7e59c-98e6-4e51-91f1-d47164d5a633";
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
 
     if (accessKey) {
       try {
@@ -49,7 +47,7 @@ export const Contact: React.FC<ContactProps> = ({ initialService }) => {
           },
           body: JSON.stringify({
             access_key: accessKey,
-            subject: `New B2B Inquiry from ${formData.name} - ${formData.company}`,
+            subject: `New B2B Inquiry from ${formData.name} - ${formData.company || "Direct Client"}`,
             from_name: formData.name,
             ...formData,
           }),
@@ -59,22 +57,37 @@ export const Contact: React.FC<ContactProps> = ({ initialService }) => {
         if (data.success) {
           setStatus("success");
           setResponseMsg("Your inquiry has been transmitted directly to our executive team.");
-        } else {
-          setStatus("error");
-          setResponseMsg(data.message || "Submission encountered an issue.");
+          return;
         }
       } catch {
-        setStatus("error");
-        setResponseMsg("Network error. Please reach us via WhatsApp or direct phone.");
+        // Fall back to direct mailto if API encountered an issue
       }
-    } else {
-      setTimeout(() => {
-        setStatus("success");
-        setResponseMsg(
-          "Thank you for contacting FURCAK. Your mandate details have been recorded. Our Dubai Silicon Oasis office will reach out within 24 business hours."
-        );
-      }, 750);
     }
+
+    // Direct mailto to info@fmm-fzco.com (routed automatically by Cloudflare to Jan's Gmail)
+    const subject = encodeURIComponent(
+      `Mandate Inquiry: ${formData.company ? `${formData.company} - ` : ""}${formData.name} (${formData.service})`
+    );
+    const body = encodeURIComponent(
+      `Executive Mandate Inquiry\n` +
+      `-----------------------------------------\n` +
+      `Full Name: ${formData.name}\n` +
+      `Company / Entity: ${formData.company || "Not specified"}\n` +
+      `Direct Email: ${formData.email}\n` +
+      `Phone / Mobile: ${formData.phone || "Not specified"}\n` +
+      `Area of Consultation: ${formData.service}\n\n` +
+      `Project Details & Objectives:\n${formData.message}\n` +
+      `-----------------------------------------\n` +
+      `Sent via fmm-fzco.com\n`
+    );
+
+    const mailtoUrl = `mailto:${COMPANY_INFO.emailGeneral}?subject=${subject}&body=${body}`;
+    window.location.href = mailtoUrl;
+
+    setStatus("success");
+    setResponseMsg(
+      `Your inquiry has been prepared for ${COMPANY_INFO.emailGeneral}. Your email app will open to confirm and send. You can also connect via WhatsApp immediately.`
+    );
   };
 
   const handleSendWhatsApp = () => {
@@ -274,6 +287,17 @@ export const Contact: React.FC<ContactProps> = ({ initialService }) => {
                     {responseMsg}
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                    <a
+                      href={`mailto:${COMPANY_INFO.emailGeneral}?subject=${encodeURIComponent(
+                        `Mandate Inquiry: ${formData.company ? `${formData.company} - ` : ""}${formData.name} (${formData.service})`
+                      )}&body=${encodeURIComponent(
+                        `Full Name: ${formData.name}\nCompany: ${formData.company || "Not specified"}\nEmail: ${formData.email}\nPhone: ${formData.phone || "Not specified"}\nService: ${formData.service}\n\nProject Details:\n${formData.message}\n`
+                      )}`}
+                      className="px-5 py-3 rounded-lg gold-gradient-bg text-[#090B0E] font-bold text-sm flex items-center justify-center gap-2 transition-all shadow-md hover:brightness-105"
+                    >
+                      <Mail className="w-4 h-4 text-[#090B0E]" />
+                      Open Email App
+                    </a>
                     <button
                       onClick={handleSendWhatsApp}
                       className="px-5 py-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm flex items-center justify-center gap-2 transition-all cursor-pointer"

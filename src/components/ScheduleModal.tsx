@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { X, Calendar, Clock, Phone, Send, CheckCircle2 } from "lucide-react";
+import { X, Calendar, Clock, Phone, Send, CheckCircle2, Mail } from "lucide-react";
 import { COMPANY_INFO, SERVICES_DATA } from "@/lib/data";
 
 interface ScheduleModalProps {
@@ -27,30 +27,52 @@ export const ScheduleModal: React.FC<ScheduleModalProps> = ({ isOpen, onClose })
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    const accessKey =
-      process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ||
-      "7cc7e59c-98e6-4e51-91f1-d47164d5a633";
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
 
-    try {
-      await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          access_key: accessKey,
-          subject: `New Consultation Request: ${formData.name} - ${formData.preferredTime}`,
-          from_name: formData.name,
-          ...formData,
-        }),
-      });
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setSubmitting(false);
-      setSubmitted(true);
+    if (accessKey) {
+      try {
+        await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            access_key: accessKey,
+            subject: `New Consultation Request: ${formData.name} - ${formData.preferredTime}`,
+            from_name: formData.name,
+            ...formData,
+          }),
+        });
+        setSubmitting(false);
+        setSubmitted(true);
+        return;
+      } catch {
+        // Fall back to direct mailto
+      }
     }
+
+    // Direct mailto to info@fmm-fzco.com
+    const subject = encodeURIComponent(
+      `Consultation Request: ${formData.name} (${formData.preferredTime})`
+    );
+    const body = encodeURIComponent(
+      `Executive Consultation Request\n` +
+      `-----------------------------------------\n` +
+      `Name: ${formData.name}\n` +
+      `Company: ${formData.company || "Not specified"}\n` +
+      `Email: ${formData.email}\n` +
+      `Phone: ${formData.phone || "Not specified"}\n` +
+      `Service: ${formData.service}\n` +
+      `Preferred Time: ${formData.preferredTime}\n\n` +
+      `Project Brief / Notes:\n${formData.notes || "None provided"}\n` +
+      `-----------------------------------------\n` +
+      `FURCAK MARKETING MANAGEMENT - FZCO\n`
+    );
+
+    window.location.href = `mailto:${COMPANY_INFO.emailGeneral}?subject=${subject}&body=${body}`;
+    setSubmitting(false);
+    setSubmitted(true);
   };
 
   const handleWhatsAppDirect = () => {
@@ -81,27 +103,40 @@ export const ScheduleModal: React.FC<ScheduleModalProps> = ({ isOpen, onClose })
               <CheckCircle2 className="w-8 h-8" />
             </div>
             <h3 className="text-2xl font-bold font-heading text-white mb-2">
-              Consultation Request Received
+              Consultation Request Prepared
             </h3>
             <p className="text-slate-200 text-sm max-w-md mx-auto mb-6">
-              Thank you, <span className="text-[#EFE4CA] font-semibold">{formData.name}</span>. Our executive office at Dubai Silicon Oasis will review your request and confirm the appointment.
+              Thank you, <span className="text-[#EFE4CA] font-semibold">{formData.name}</span>. Your request has been formatted for <strong className="text-white">{COMPANY_INFO.emailGeneral}</strong>. Your mail app will open to transmit the details.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <a
+                href={`mailto:${COMPANY_INFO.emailGeneral}?subject=${encodeURIComponent(
+                  `Consultation Request: ${formData.name} (${formData.preferredTime})`
+                )}&body=${encodeURIComponent(
+                  `Name: ${formData.name}\nCompany: ${formData.company || "Not specified"}\nEmail: ${formData.email}\nPhone: ${formData.phone || "Not specified"}\nService: ${formData.service}\nPreferred Time: ${formData.preferredTime}\nNotes: ${formData.notes || "None"}\n`
+                )}`}
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg gold-gradient-bg text-[#090B0E] font-bold text-sm shadow-md hover:brightness-105 transition-all"
+              >
+                <Mail className="w-4 h-4 text-[#090B0E]" />
+                <span>Open Email App</span>
+              </a>
               <button
                 onClick={handleWhatsAppDirect}
                 className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition-all cursor-pointer"
               >
                 <Phone className="w-4 h-4" />
-                Connect on WhatsApp Immediately
+                <span>Quick WhatsApp</span>
               </button>
+            </div>
+            <div className="pt-4">
               <button
                 onClick={() => {
                   setSubmitted(false);
                   onClose();
                 }}
-                className="px-5 py-3 rounded-lg border border-slate-700 hover:bg-slate-800 text-white text-sm font-semibold transition-all cursor-pointer"
+                className="text-xs text-slate-400 hover:text-white transition-colors cursor-pointer"
               >
-                Done
+                Close window
               </button>
             </div>
           </div>
