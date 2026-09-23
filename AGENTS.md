@@ -170,3 +170,55 @@ In Tailwind CSS v4, defining `--color-base: #090B0E;` in `globals.css` under the
 2. Added explicit `color: #E2E8F0;` to `.furcak-card` containers to guarantee high-contrast text inheritance across all browsers.
 3. Updated action buttons in `Hero.tsx` with explicit high-contrast text colors (`text-white`, `text-[#EFE4CA]`, `text-[#090B0E]`).
 
+---
+
+## 8. Production Domain, Cloudflare Email Routing & Lead Ingestion Architecture
+
+### 8.1 Production Identity & Domain Ownership
+- **Official Corporate Domain:** `https://fmm-fzco.com` (Derived from *FURCAK MARKETING MANAGEMENT - FZCO*).
+- **Registrar & DNS:** Cloudflare Registrar with full DNSSEC and Anycast proxying (`104.21.51.197`, `172.67.185.126`).
+- **Hosting Target:** Cloudflare Pages / Workers runtime (`furcak-web-dubai`).
+- **SSL / TLS Encryption:** TLSv1.3 with Google Trust Services / Cloudflare Universal Edge SSL (`WE1` certificate authority).
+
+### 8.2 Unified Email Ingestion via Cloudflare Email Routing
+To preserve high institutional stature and prevent the degradation of brand authority associated with exposing raw personal `@gmail.com` addresses on official corporate collaterals, a zero-cost, enterprise-grade email pipeline was established:
+1. **Official Corporate Address:** `info@fmm-fzco.com` (sole public-facing email across all pages, footers, and schema).
+2. **Cloudflare Destination Address:** `jan.furcak@gmail.com` (verified destination inbox).
+3. **Routing Rules:**
+   - **Specific Rule:** `info@fmm-fzco.com` ➔ Forwards directly to `jan.furcak@gmail.com`.
+   - **Catch-All Policy:** `*@fmm-fzco.com` ➔ Forwards all unmatched prefixes (e.g. `jan@`, `contact@`, or typographical errors) to `jan.furcak@gmail.com`.
+4. **DNS Mail Records Configured:**
+   - MX: `route1.mx.cloudflare.net`, `route2.mx.cloudflare.net`, `route3.mx.cloudflare.net`
+   - SPF: `v=spf1 include:_spf.mx.cloudflare.net ~all`
+   - DKIM: Cloudflare-managed 2048-bit domain key signatures.
+   - DMARC: Configured with `p=reject` policy and automated reporting.
+
+### 8.3 Native Ingestion & Client Concierge Pipeline
+Both interactive intake forms on the site are decoupled from fragile third-party intermediaries and stream directly to the verified corporate pipeline:
+1. **Mandate Inquiry Form (`src/components/Contact.tsx`):**
+   - Automatically generates structured RFC 6068 email payloads containing:
+     - Prospective Client Name & Corporate Entity
+     - Direct Contact Coordinates (Email & Telephone)
+     - Core Area of Consultation (e.g. GCC Market Entry, Industrial Expansion)
+     - Executive Project Brief & Jurisdictional Scope
+   - Formats and dispatches directly to `info@fmm-fzco.com`, which lands in Jan Furcak's Gmail within seconds.
+   - Provides instant dual-channel escalation via the dedicated WhatsApp Concierge (`+971 50 539 5412`).
+2. **Strategic Consultation Modal (`src/components/ScheduleModal.tsx`):**
+   - Prepares scheduled consultation briefs specifying preferred Gulf Standard Time (GST) windows, target capability requirements, and mandate notes.
+   - Dispatches simultaneously to `info@fmm-fzco.com` and provides one-click WhatsApp appointment confirmation.
+3. **Optional Web3Forms API Passthrough:**
+   - Maintained native support for `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` for headless background AJAX submissions without opening client email software, with graceful automatic fallback to formatted `mailto:` when unconfigured.
+
+### 8.4 Navigation Hydration Fix (`Navbar.tsx` & `FurcakLogo.tsx`)
+- **Root Cause:** Next.js hydration error `<a> cannot be a descendant of <a>` caused by `<Navbar>` wrapping `<FurcakLogo>` in `<Link href="/">`, while `<FurcakLogo>` internally declared `<Link href="#home">`.
+- **Architectural Fix:**
+  - Standardized `FurcakLogo` with an optional `href` prop defaulting to `"/"`.
+  - Removed redundant outer `<Link>` in `Navbar.tsx`, restoring clean single-anchor DOM hierarchy.
+
+### 8.5 Corporate Network / Firewall Security Note (FortiGuard NOD)
+- When accessing `https://fmm-fzco.com` from corporate networks protected by enterprise firewalls (e.g. Fortinet FortiGate):
+  - Firewalls may temporarily flag or redirect the domain to `208.91.112.55` (`Fortiguard SDNS Blocked Page`) with a self-signed inspection certificate, triggering browser "Nezabezpečené" warnings.
+  - **Etiology:** Standard FortiGuard **Newly Observed Domain (NOD)** heuristics applied to all domains within 24–72 hours of initial DNS registration.
+  - **Resolution:** Resolves automatically as security databases index and classify the domain under *Business & Corporate*; can be accelerated via [FortiGuard Web Filter Lookup](https://www.fortiguard.com/webfilter) categorization.
+
+
