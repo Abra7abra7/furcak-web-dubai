@@ -20,12 +20,37 @@ export const ScheduleModal: React.FC<ScheduleModalProps> = ({ isOpen, onClose })
     notes: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    const accessKey =
+      process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ||
+      "7cc7e59c-98e6-4e51-91f1-d47164d5a633";
+
+    try {
+      await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: `New Consultation Request: ${formData.name} - ${formData.preferredTime}`,
+          from_name: formData.name,
+          ...formData,
+        }),
+      });
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setSubmitting(false);
+      setSubmitted(true);
+    }
   };
 
   const handleWhatsAppDirect = () => {

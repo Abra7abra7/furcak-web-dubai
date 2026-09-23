@@ -35,7 +35,9 @@ export const Contact: React.FC<ContactProps> = ({ initialService }) => {
     e.preventDefault();
     setStatus("submitting");
 
-    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+    const accessKey =
+      process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ||
+      "7cc7e59c-98e6-4e51-91f1-d47164d5a633";
 
     if (accessKey) {
       try {
