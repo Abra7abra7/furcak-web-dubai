@@ -34,7 +34,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSchedule }) => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Left: Logo */}
+        {/* Left: Responsive Corporate Monogram Logo */}
         <FurcakLogo size="md" />
 
         {/* Center: Disciplined Desktop Navigation */}

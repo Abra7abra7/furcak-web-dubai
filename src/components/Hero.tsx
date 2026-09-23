@@ -2,7 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, ShieldCheck, Award, Building2, PhoneCall } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, ShieldCheck, Award, Building2, PhoneCall, Mail } from "lucide-react";
 import { COMPANY_INFO } from "@/lib/data";
 
 interface HeroProps {
@@ -17,95 +18,132 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSchedule }) => {
       window.dispatchEvent(new CustomEvent("open-schedule"));
     }
   };
+
   return (
     <section
       id="home"
-      className="relative min-h-[90vh] sm:min-h-screen pt-32 sm:pt-40 pb-20 sm:pb-28 flex flex-col justify-center items-center overflow-hidden architectural-grid"
+      className="relative min-h-[90vh] sm:min-h-screen pt-28 sm:pt-36 pb-16 sm:pb-24 flex flex-col justify-center items-center overflow-hidden architectural-grid"
     >
-      {/* Subtle Architectural Ambient Lighting */}
+      {/* Architectural Ambient Lighting */}
       <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[700px] h-[340px] sm:h-[450px] rounded-full bg-[#C8A55E]/[0.07] blur-[120px]" />
-        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#090B0E] to-transparent" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[650px] h-[300px] sm:h-[450px] rounded-full bg-[#C8A55E]/[0.09] blur-[100px] sm:blur-[140px]" />
+        <div className="absolute bottom-0 left-0 right-0 h-32 sm:h-40 bg-gradient-to-t from-[#090B0E] to-transparent" />
       </div>
 
       <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
         
-        {/* Institutional Regulatory Strip */}
-        <div className="inline-flex items-center gap-2 sm:gap-3 px-4 py-1.5 rounded-full bg-[#12151B] border border-[#C8A55E]/30 mb-8 shadow-sm">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#C8A55E]" />
-          <span className="text-xs font-semibold tracking-wide text-[#EFE4CA]">
+        {/* 1. Official Corporate Emblem Feature (Client Priority) */}
+        <div className="relative mb-5 sm:mb-7 flex flex-col items-center group">
+          {/* Subtle Golden Glow Halo behind Logo */}
+          <div className="absolute -inset-4 sm:-inset-6 bg-[#C8A55E]/20 rounded-full blur-2xl -z-10 pointer-events-none group-hover:bg-[#C8A55E]/30 transition-all duration-500" />
+          
+          <div className="relative w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#1E232F] to-[#0E1015] p-3.5 sm:p-5 border-2 border-[#C8A55E]/50 shadow-[0_10px_35px_rgba(0,0,0,0.7)] flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+            <Image
+              src="/images/furcak-logo.png"
+              alt="FURCAK MARKETING MANAGEMENT - FZCO Official Logo"
+              width={140}
+              height={140}
+              className="w-full h-full object-contain filter drop-shadow-[0_4px_14px_rgba(200,165,94,0.45)]"
+              priority
+            />
+          </div>
+
+          {/* Stately Corporate Monogram Header */}
+          <div className="mt-3 flex items-center gap-2">
+            <span className="font-heading font-black text-xl sm:text-2xl text-white tracking-[0.22em]">
+              FURCAK
+            </span>
+            <span className="text-[10px] sm:text-xs font-bold tracking-widest text-[#090B0E] bg-[#C8A55E] px-2 py-0.5 rounded shadow-sm uppercase">
+              FZCO
+            </span>
+          </div>
+        </div>
+
+        {/* 2. Institutional Regulatory Authority Strip */}
+        <div className="inline-flex flex-wrap sm:flex-nowrap items-center justify-center gap-1.5 sm:gap-2.5 px-3 sm:px-4 py-1.5 rounded-full bg-[#12151B] border border-[#C8A55E]/30 mb-5 sm:mb-7 shadow-sm text-center">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#C8A55E] shrink-0" />
+          <span className="text-[10px] sm:text-xs font-semibold tracking-wide text-[#EFE4CA]">
             Dubai Silicon Oasis (DSO-IFZA)
           </span>
-          <span className="text-[#C8A55E]/50">|</span>
-          <span className="text-xs text-slate-300 font-medium">
-            DIEZA Trade Licence No. {COMPANY_INFO.tradeLicenceNo}
+          <span className="text-[#C8A55E]/50">•</span>
+          <span className="text-[10px] sm:text-xs text-slate-300 font-medium">
+            Licence No. {COMPANY_INFO.tradeLicenceNo}
           </span>
         </div>
 
-        {/* Master Editorial Headline */}
-        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold font-heading text-white max-w-5xl leading-[1.12] mb-7 tracking-tight">
+        {/* 3. Master Headline (Mobile-Optimized Hierarchy) */}
+        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold font-heading text-white max-w-4xl leading-[1.18] sm:leading-[1.12] mb-3.5 sm:mb-6 tracking-tight px-1">
           Driving Business Growth. Developing Opportunities. Connecting Markets.
         </h1>
 
-        {/* Executive Subtitle */}
-        <p className="text-base sm:text-lg md:text-xl text-slate-200 max-w-3xl leading-relaxed mb-10 font-normal">
-          <strong className="text-white font-semibold">{COMPANY_INFO.legalName}</strong> is a Dubai-based business consultancy providing Marketing Management, Business Development and Project Development Consultancy services.
+        {/* 4. Executive Subtitle (Crisp & Scannable on Mobile) */}
+        <p className="text-xs sm:text-base md:text-lg text-slate-300 max-w-2xl leading-relaxed mb-6 sm:mb-9 font-normal px-2">
+          <span className="hidden sm:inline">
+            <strong className="text-white font-semibold">{COMPANY_INFO.legalName}</strong> is a Dubai-based consultancy providing Marketing Management, Business Development, and Project Advisory across the UAE and GCC.
+          </span>
+          <span className="sm:hidden">
+            Dubai-licensed strategic consultancy for Marketing Management, Business Development & Cross-Border Expansion.
+          </span>
         </p>
 
-        {/* High-Contrast Executive Actions */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3.5 sm:gap-4 w-full max-w-lg mb-16">
-          {/* Explore Services */}
+        {/* 5. Mobile-Refined Action Buttons (No Visual Clutter) */}
+        <div className="w-full max-w-xs sm:max-w-xl mb-8 sm:mb-14">
+          {/* Primary Action Button */}
           <Link
             href="/services"
-            className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-lg gold-gradient-bg text-[#090B0E] font-bold text-sm sm:text-base tracking-wide shadow-md hover:shadow-lg transition-all hover:brightness-105 active:scale-[0.99]"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-7 sm:py-3.5 rounded-lg gold-gradient-bg text-[#090B0E] font-bold text-xs sm:text-base tracking-wide shadow-md hover:shadow-lg transition-all hover:brightness-105 active:scale-[0.99] mb-2 sm:mb-0 sm:mr-3"
           >
             <span>Explore Services</span>
-            <ArrowRight className="w-4 h-4 text-[#090B0E]" />
+            <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#090B0E]" />
           </Link>
 
-          {/* Schedule Direct Consultation */}
-          <button
-            onClick={handleScheduleClick}
-            className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-[#14171F] hover:bg-[#1A1F29] text-[#EFE4CA] border border-[#C8A55E]/40 hover:border-[#C8A55E] font-semibold text-sm sm:text-base transition-all active:scale-[0.99] cursor-pointer shadow-sm"
-          >
-            <PhoneCall className="w-4 h-4 text-[#C8A55E]" />
-            <span className="text-[#EFE4CA]">Schedule Call</span>
-          </button>
+          {/* Secondary Action Grid (2-column on mobile, inline on desktop) */}
+          <div className="grid grid-cols-2 gap-2 sm:inline-flex sm:items-center">
+            {/* Schedule Call */}
+            <button
+              onClick={handleScheduleClick}
+              className="inline-flex items-center justify-center gap-1.5 px-3 sm:px-5 py-2.5 sm:py-3 rounded-lg bg-[#14171F] hover:bg-[#1A1F29] text-[#EFE4CA] border border-[#C8A55E]/40 hover:border-[#C8A55E] font-semibold text-xs sm:text-sm transition-all active:scale-[0.99] cursor-pointer shadow-sm"
+            >
+              <PhoneCall className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#C8A55E] shrink-0" />
+              <span>Schedule Call</span>
+            </button>
 
-          {/* Contact Us */}
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center px-6 py-3.5 rounded-lg bg-[#12151B] hover:bg-[#1A1F29] border border-white/20 hover:border-white/40 text-white font-medium text-sm sm:text-base transition-colors"
-          >
-            <span className="text-white">Contact Us</span>
-          </Link>
+            {/* Contact Mandate */}
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-1.5 px-3 sm:px-5 py-2.5 sm:py-3 rounded-lg bg-[#12151B] hover:bg-[#1A1F29] border border-white/20 hover:border-white/40 text-white font-medium text-xs sm:text-sm transition-colors"
+            >
+              <Mail className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-slate-300 shrink-0" />
+              <span>Contact Us</span>
+            </Link>
+          </div>
         </div>
 
-        {/* Regulatory Governance Ledger */}
-        <div className="w-full max-w-4xl pt-6 pb-2 border-t border-slate-800/80">
-          <div className="text-xs font-semibold uppercase tracking-wider text-[#C8A55E] mb-4 text-center">
+        {/* 6. Regulatory Verification Highlights (Clean Responsive Layout) */}
+        <div className="w-full max-w-4xl pt-5 sm:pt-6 pb-2 border-t border-slate-800/80">
+          <div className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#C8A55E] mb-3 text-center">
             Official UAE Licensing & Regulatory Framework
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4">
             {COMPANY_INFO.trustBadges.map((badge, idx) => (
               <div
                 key={idx}
-                className="flex items-center justify-start sm:justify-center gap-3 p-3.5 rounded-xl bg-[#12151B] border border-[#C8A55E]/20 hover:border-[#C8A55E]/40 transition-colors"
+                className="flex items-center justify-start sm:justify-center gap-2.5 sm:gap-3 p-2.5 sm:p-3.5 rounded-xl bg-[#12151B] border border-[#C8A55E]/20 hover:border-[#C8A55E]/40 transition-colors text-left"
               >
-                <div className="w-9 h-9 rounded-lg bg-[#1A1F29] border border-[#C8A55E]/30 flex items-center justify-center text-[#C8A55E] shrink-0">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-[#1A1F29] border border-[#C8A55E]/30 flex items-center justify-center text-[#C8A55E] shrink-0">
                   {idx === 0 ? (
-                    <Building2 className="w-4 h-4" />
+                    <Building2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   ) : idx === 1 ? (
-                    <ShieldCheck className="w-4 h-4" />
+                    <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   ) : (
-                    <Award className="w-4 h-4" />
+                    <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   )}
                 </div>
-                <div className="text-left">
-                  <div className="text-sm font-bold text-white font-heading">
+                <div>
+                  <div className="text-xs sm:text-sm font-bold text-white font-heading leading-tight">
                     {badge.label}
                   </div>
-                  <div className="text-xs text-slate-300 font-normal">
+                  <div className="text-[10px] sm:text-xs text-slate-300 font-normal leading-tight mt-0.5">
                     {badge.subtitle}
                   </div>
                 </div>
@@ -114,20 +152,20 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSchedule }) => {
           </div>
         </div>
 
-        {/* Institutional Metrics Matrix */}
-        <div className="w-full max-w-5xl mt-12 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 text-left">
+        {/* 7. Institutional Metrics Ledger (Compact 2x2 Grid on Mobile) */}
+        <div className="w-full max-w-5xl mt-6 sm:mt-10 grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 text-left">
           {COMPANY_INFO.stats.map((stat, idx) => (
             <div
               key={idx}
-              className="p-5 rounded-xl bg-[#12151B] border border-slate-800 hover:border-[#C8A55E]/30 transition-colors"
+              className="p-3 sm:p-5 rounded-xl bg-[#12151B] border border-slate-800 hover:border-[#C8A55E]/30 transition-colors"
             >
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-heading text-white">
+              <div className="text-xl sm:text-3xl lg:text-4xl font-extrabold font-heading text-white">
                 {stat.value}
               </div>
-              <div className="text-xs sm:text-sm font-semibold text-[#EFE4CA] mt-1">
+              <div className="text-[11px] sm:text-sm font-semibold text-[#EFE4CA] mt-0.5 sm:mt-1 leading-snug">
                 {stat.label}
               </div>
-              <div className="text-xs text-slate-300 mt-0.5 leading-snug font-normal">
+              <div className="text-[10px] sm:text-xs text-slate-300 mt-0.5 leading-tight font-normal hidden xs:block">
                 {stat.detail}
               </div>
             </div>
@@ -138,3 +176,4 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSchedule }) => {
     </section>
   );
 };
+

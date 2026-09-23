@@ -221,4 +221,27 @@ Both interactive intake forms on the site are decoupled from fragile third-party
   - **Etiology:** Standard FortiGuard **Newly Observed Domain (NOD)** heuristics applied to all domains within 24–72 hours of initial DNS registration.
   - **Resolution:** Resolves automatically as security databases index and classify the domain under *Business & Corporate*; can be accelerated via [FortiGuard Web Filter Lookup](https://www.fortiguard.com/webfilter) categorization.
 
+---
+
+## 9. Official Brand Monogram Integration & Mobile Layout Optimization
+
+### 9.1 Authentic Corporate Monogram Emblem (`/images/furcak-logo.png`)
+- Processed the client's official high-resolution metallic gold monogram ("FF" interlocking insignia with forward dynamic arc/swoosh).
+- Extracted and de-multiplied the white backdrop to produce a 440x415 transparent RGBA asset with smooth anti-aliased edges, perfectly adapted for dark basalt substrates (`#090B0E`).
+- Replaced the geometric SVG placeholder in `FurcakLogo.tsx` with Next.js optimized `<Image>` rendering across all components (Navbar, Footer, Modals).
+- Featured prominently as the stately centerpiece of the homepage Hero section in `Hero.tsx` with a warm ambient gold halo and `FURCAK FZCO` typography.
+
+### 9.2 Mobile UX Streamlining & Readability Overhaul
+- **Hero Viewport Clarity:**
+  - Resolved cluttered vertical stacking: Replaced 3 bulky stacked full-width buttons with a primary gold action button paired with a sleek 2-column secondary action row (`[ 📞 Schedule Call ]` and `[ ✉️ Contact Us ]`).
+  - Authority Pill: Made regulatory authority pill wrap cleanly on small viewports with no text truncation.
+  - Subtitle: Concise, impactful summary on mobile with no redundant wordiness.
+  - Trust Framework: Streamlined 3-card layout into compact responsive cards.
+  - Metrics Ledger: Formatted into a balanced 2x2 grid with tight padding.
+- **Section Spacing & Text Redundancy:**
+  - Reduced excessive mobile section vertical padding from `py-20` down to `py-12` across homepage sections.
+  - Streamlined dense narrative paragraphs on mobile while preserving complete depth on larger screens and on dedicated App Router subpages (`/about`, `/services`, etc.).
+  - Header responsiveness: Tagline hidden on narrow viewports in `FurcakLogo` to ensure the Schedule button and Hamburger menu maintain optimal spacing.
+
+
 
