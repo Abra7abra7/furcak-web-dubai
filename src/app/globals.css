@@ -1,24 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0b0c0e;
-  --foreground: #f8fafc;
-  --card-bg: #16181d;
-  --card-border: rgba(197, 160, 89, 0.25);
-  --card-border-hover: rgba(197, 160, 89, 0.6);
-  --gold-light: #f3e7c4;
-  --gold-primary: #c5a059;
-  --gold-dark: #9b782b;
+  --background: #090B0E;
+  --foreground: #F8FAFC;
+  --card-bg: #12151B;
+  --card-border: rgba(200, 165, 94, 0.2);
+  --card-border-hover: rgba(200, 165, 94, 0.5);
+  --gold-light: #EFE4CA;
+  --gold-primary: #C8A55E;
+  --gold-dark: #9A7730;
   --font-heading: 'Outfit', sans-serif;
   --font-body: 'Inter', sans-serif;
 }
 
 @theme {
-  --color-base: #0b0c0e;
-  --color-card: #16181d;
-  --color-gold-light: #f3e7c4;
-  --color-gold-primary: #c5a059;
-  --color-gold-dark: #9b782b;
+  --color-basalt: #090B0E;
+  --color-card: #12151B;
+  --color-gold-light: #EFE4CA;
+  --color-gold-primary: #C8A55E;
+  --color-gold-dark: #9A7730;
   --font-heading: var(--font-heading);
   --font-body: var(--font-body);
 }
@@ -31,109 +31,101 @@ html {
 }
 
 body {
-  background-color: #0b0c0e;
-  color: #f8fafc;
+  background-color: #090B0E;
+  color: #F8FAFC;
   font-family: var(--font-body);
   overflow-x: hidden;
   width: 100%;
   position: relative;
   -webkit-text-size-adjust: 100%;
-  selection-background-color: #c5a059;
-  selection-color: #0b0c0e;
+  selection-background-color: #C8A55E;
+  selection-color: #090B0E;
 }
 
-/* Explicit Bulletproof Text Colors */
+/* Typography Hierarchy */
+h1, h2, h3, h4, .font-heading {
+  font-family: var(--font-heading);
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+  max-width: 75ch;
+}
+
+/* Authentic Architectural Gold Utilities */
 .text-gold-light {
-  color: #f3e7c4 !important;
+  color: #EFE4CA !important;
 }
 
 .text-gold-primary {
-  color: #c5a059 !important;
+  color: #C8A55E !important;
 }
 
-.text-white-pure {
-  color: #ffffff !important;
-}
-
-.text-body-light {
-  color: #e2e8f0 !important;
-}
-
-.text-body-muted {
-  color: #cbd5e1 !important;
-}
-
-/* Typography Helpers */
-h1, h2, h3, h4, .font-heading {
-  font-family: var(--font-heading);
-  letter-spacing: -0.02em;
-}
-
-/* High-Contrast Gold Text */
 .gold-gradient-text {
-  background: linear-gradient(135deg, #ffffff 0%, #f3e7c4 25%, #c5a059 65%, #d4af37 100%);
+  background: linear-gradient(135deg, #FFFFFF 15%, #EFE4CA 45%, #C8A55E 80%, #9A7730 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
 }
 
 .gold-gradient-bg {
-  background: linear-gradient(135deg, #f3e7c4 0%, #c5a059 50%, #9b782b 100%) !important;
-  color: #0b0c0e !important;
+  background: linear-gradient(135deg, #EFE4CA 0%, #C8A55E 55%, #9A7730 100%) !important;
+  color: #090B0E !important;
 }
 
-/* High-Visibility Card Styles */
+/* Architectural Panels & Dossiers (replaces generic floating SaaS cards) */
 .furcak-card {
-  background: #16181d;
-  border: 1px solid rgba(197, 160, 89, 0.25);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  background: #12151B;
+  color: #E2E8F0;
+  border: 1px solid rgba(200, 165, 94, 0.18);
+  box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .furcak-card:hover {
-  border-color: rgba(197, 160, 89, 0.6);
-  box-shadow: 0 12px 36px -8px rgba(197, 160, 89, 0.25);
+  border-color: rgba(200, 165, 94, 0.45);
+  box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.65);
 }
 
 .glass-panel {
-  background: rgba(22, 24, 29, 0.9) !important;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(197, 160, 89, 0.35) !important;
-  color: #ffffff !important;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  background: rgba(18, 21, 27, 0.92) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(200, 165, 94, 0.25) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.6);
 }
 
 .glass-nav {
-  background: rgba(11, 12, 14, 0.94);
+  background: rgba(9, 11, 14, 0.92);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(197, 160, 89, 0.25);
+  border-bottom: 1px solid rgba(200, 165, 94, 0.18);
 }
 
-/* Ambient Radial Glows */
-.gold-glow-radial {
-  background: radial-gradient(circle at 50% 30%, rgba(197, 160, 89, 0.16) 0%, rgba(11, 12, 14, 0) 70%);
+/* Subtle Architectural Grid Background */
+.architectural-grid {
+  background-image: linear-gradient(to right, rgba(200, 165, 94, 0.04) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(200, 165, 94, 0.04) 1px, transparent 1px);
+  background-size: 4rem 4rem;
 }
 
-.gold-glow-subtle {
-  background: radial-gradient(circle, rgba(197, 160, 89, 0.1) 0%, rgba(11, 12, 14, 0) 65%);
-}
-
-/* Custom Luxury Scrollbar */
+/* Custom Executive Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0b0c0e;
+  background: #090B0E;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2a2e38;
-  border-radius: 4px;
-  border: 1px solid rgba(197, 160, 89, 0.3);
+  background: #222733;
+  border-radius: 3px;
+  border: 1px solid rgba(200, 165, 94, 0.2);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #c5a059;
+  background: #C8A55E;
 }
 
 /* Pulse animation for WhatsApp badge */
@@ -143,13 +135,13 @@ h1, h2, h3, h4, .font-heading {
     opacity: 1;
   }
   50% {
-    transform: scale(1.1);
-    opacity: 0.9;
+    transform: scale(1.08);
+    opacity: 0.92;
   }
 }
 
 .animate-subtle-pulse {
-  animation: subtle-pulse 2.5s infinite ease-in-out;
+  animation: subtle-pulse 2.8s infinite ease-in-out;
 }
 
 /* Prevent auto zoom on iOS inputs */

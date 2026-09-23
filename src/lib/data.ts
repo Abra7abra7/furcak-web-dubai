@@ -66,10 +66,13 @@ export const COMPANY_INFO = {
 };
 
 export const NAV_LINKS = [
-  { name: "About", href: "#about" },
-  { name: "Services", href: "#services" },
-  { name: "Leadership", href: "#leadership" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Services", href: "/services" },
+  { name: "Industries", href: "/industries" },
+  { name: "Approach", href: "/approach" },
+  { name: "Leadership", href: "/leadership" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export const SERVICES_DATA: ServiceItem[] = [
