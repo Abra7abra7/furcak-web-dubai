@@ -25,12 +25,18 @@ Web má pripravenú integráciu na bezplatnú službu **Web3Forms**:
 
 ---
 
-## 3. Nasadenie na Vercel (Hosting) & Vlastná Doména
-1. Prihláste sa na [Vercel.com](https://vercel.com) cez váš GitHub účet.
+## 3. Nasadenie na Cloudflare Pages (Hosting) & Vlastná Doména
+1. Prihláste sa do [Cloudflare Dashboard](https://dash.cloudflare.com) a prejdite do sekcie **Compute (Workers & Pages)** -> **Create application** -> **Pages** -> **Connect to Git**.
 2. Vyberte repozitár `furcak-web-dubai`.
-3. Pridajte premennú `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`.
-4. Kliknite na **Deploy**.
-5. V sekcii *Settings -> Domains* priraďte vlastnú doménu (napr. `furcak.com` alebo `furcak.ae`).
+3. Nastavenia buildu:
+   - **Framework preset:** `Next.js` (alebo `None`)
+   - **Build command:** `npx @cloudflare/next-on-pages` alebo `npm run build`
+   - **Build output directory:** `.vercel/output/static` (pri next-on-pages) alebo `out` (pri statickom exporte)
+4. V sekcii **Environment Variables** pridajte:
+   - `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` = váš kľúč z web3forms.com
+   - `NODE_VERSION` = `20` alebo `22`
+5. Kliknite na **Save and Deploy**.
+6. V záložke **Custom domains** priraďte vlastnú doménu (napr. `furcak.com` alebo `furcak.ae`) s automatickým bezplatným SSL certifikátom a ochranou Cloudflare.
 
 ---
 
