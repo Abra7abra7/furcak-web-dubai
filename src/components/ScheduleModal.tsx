@@ -19,16 +19,16 @@ export const ScheduleModal: React.FC<ScheduleModalProps> = ({ isOpen, onClose })
     preferredTime: "Morning (09:00 - 13:00 GST)",
     notes: "",
   });
-  const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   if (!isOpen) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
 
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
     if (accessKey) {
       try {
         await fetch("https://api.web3forms.com/submit", {
@@ -38,7 +38,6 @@ export const ScheduleModal: React.FC<ScheduleModalProps> = ({ isOpen, onClose })
             Accept: "application/json",
           },
           body: JSON.stringify({
-            access_key: accessKey,
             subject: `New Consultation Request: ${formData.name} - ${formData.preferredTime}`,
             from_name: formData.name,
             ...formData,
@@ -274,10 +273,11 @@ export const ScheduleModal: React.FC<ScheduleModalProps> = ({ isOpen, onClose })
               <div className="pt-2 flex flex-col sm:flex-row gap-3">
                 <button
                   type="submit"
-                  className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg gold-gradient-bg text-[#090B0E] font-bold text-sm sm:text-base shadow-md hover:brightness-105 transition-all cursor-pointer"
+                  disabled={submitting}
+                  className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg gold-gradient-bg text-[#090B0E] font-bold text-sm sm:text-base shadow-md hover:brightness-105 transition-all cursor-pointer disabled:opacity-60"
                 >
                   <Send className="w-4 h-4 text-[#090B0E]" />
-                  <span>Confirm Request</span>
+                  <span>{submitting ? "Transmitting..." : "Confirm Request"}</span>
                 </button>
                 <button
                   type="button"

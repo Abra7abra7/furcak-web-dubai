@@ -79,7 +79,7 @@ export default function RootLayout({
     alternateName: "FURCAK",
     description:
       "Dubai-based business consultancy providing Marketing Management, Business Development, and Project Development Consultancy services.",
-    url: "https://furcak.com",
+    url: "https://fmm-fzco.com",
     telephone: "+971505395412",
     address: {
       "@type": "PostalAddress",
@@ -108,7 +108,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${outfit.variable} ${inter.variable} dark`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${outfit.variable} ${inter.variable} dark`}>
       <head>
         <script
           type="application/ld+json"

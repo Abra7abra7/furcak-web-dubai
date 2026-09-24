@@ -36,12 +36,8 @@ export const FurcakLogo: React.FC<FurcakLogoProps> = ({
     xl: "text-sm tracking-widest",
   };
 
-  return (
-    <Link
-      href={href}
-      className={`inline-flex items-center gap-2.5 sm:gap-3.5 group focus:outline-none ${className}`}
-      aria-label="FURCAK MARKETING MANAGEMENT - FZCO Home"
-    >
+  const logoContent = (
+    <>
       {/* Official Luxury Gold Monogram Emblem */}
       <div
         className={`relative ${emblemSizes[size]} shrink-0 rounded-xl bg-gradient-to-br from-[#1C202B] to-[#0D0F14] border border-[#C8A55E]/40 shadow-md group-hover:border-[#C8A55E] transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(200,165,94,0.35)] flex items-center justify-center`}
@@ -76,6 +72,24 @@ export const FurcakLogo: React.FC<FurcakLogoProps> = ({
           </span>
         )}
       </div>
+    </>
+  );
+
+  if (!href) {
+    return (
+      <div className={`inline-flex items-center gap-2.5 sm:gap-3.5 group ${className}`}>
+        {logoContent}
+      </div>
+    );
+  }
+
+  return (
+    <Link
+      href={href}
+      className={`inline-flex items-center gap-2.5 sm:gap-3.5 group focus:outline-none ${className}`}
+      aria-label="FURCAK MARKETING MANAGEMENT - FZCO Home"
+    >
+      {logoContent}
     </Link>
   );
 };

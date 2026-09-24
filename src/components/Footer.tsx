@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { FurcakLogo } from "./FurcakLogo";
 import { COMPANY_INFO, NAV_LINKS, SERVICES_DATA } from "@/lib/data";
-import { MapPin, ShieldCheck, ArrowUp, MessageCircle, Mail } from "lucide-react";
+import { MapPin, ShieldCheck, ArrowUp, MessageCircle, Mail, Phone } from "lucide-react";
 
 interface FooterProps {
   onOpenLegal: (type: "privacy" | "terms") => void;
@@ -41,8 +41,14 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal, onOpenSchedule }) =
               </div>
               <div className="flex items-center gap-2.5 text-slate-200 font-medium">
                 <Mail className="w-4 h-4 text-[#C8A55E] shrink-0" />
-                <a href={`mailto:${COMPANY_INFO.contactEmail}`} className="hover:text-[#EFE4CA] transition-colors">
-                  {COMPANY_INFO.contactEmail}
+                <a href={`mailto:${COMPANY_INFO.emailGeneral}`} className="hover:text-[#EFE4CA] transition-colors">
+                  {COMPANY_INFO.emailGeneral}
+                </a>
+              </div>
+              <div className="flex items-center gap-2.5 text-slate-200 font-medium">
+                <Phone className="w-4 h-4 text-[#C8A55E] shrink-0" />
+                <a href={`tel:${COMPANY_INFO.phoneRaw}`} className="hover:text-[#EFE4CA] transition-colors">
+                  {COMPANY_INFO.phoneDisplay}
                 </a>
               </div>
             </div>

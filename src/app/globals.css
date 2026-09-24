@@ -144,6 +144,15 @@ p {
   animation: subtle-pulse 2.8s infinite ease-in-out;
 }
 
+/* Hide scrollbar for Chrome, Safari, Opera and Firefox */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* Prevent auto zoom on iOS inputs */
 @media screen and (max-width: 768px) {
   input, select, textarea {

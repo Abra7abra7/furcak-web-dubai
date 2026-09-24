@@ -90,6 +90,16 @@ export const Contact: React.FC<ContactProps> = ({ initialService }) => {
     );
   };
 
+  const handleSendEmail = () => {
+    const subject = encodeURIComponent(
+      `B2B Inquiry from ${formData.name || "Client"} - ${formData.company || "General"}`
+    );
+    const body = encodeURIComponent(
+      `Hello Jan & FURCAK Team,\n\nName: ${formData.name}\nCompany: ${formData.company}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nService of Interest: ${formData.service}\n\nMessage / Mandate Scope:\n${formData.message}\n`
+    );
+    window.location.href = `mailto:${COMPANY_INFO.emailGeneral}?subject=${subject}&body=${body}`;
+  };
+
   const handleSendWhatsApp = () => {
     const text = encodeURIComponent(
       `Hello FURCAK Team,\n\nName: ${formData.name || "Client"}\nCompany: ${formData.company || "Not specified"}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nService: ${formData.service}\nMessage: ${formData.message}`
@@ -249,6 +259,27 @@ export const Contact: React.FC<ContactProps> = ({ initialService }) => {
                   </a>
                   <p className="text-xs text-slate-300 mt-0.5 font-normal">
                     Live client concierge & preliminary project consultation
+                  </p>
+                </div>
+              </div>
+
+              {/* Corporate Email */}
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-lg bg-[#181C24] border border-[#C8A55E]/30 flex items-center justify-center text-[#C8A55E] shrink-0 mt-0.5">
+                  <Mail className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-[11px] uppercase font-semibold text-[#C8A55E] tracking-wider mb-1">
+                    Official Corporate Email
+                  </div>
+                  <a
+                    href={`mailto:${COMPANY_INFO.emailGeneral}`}
+                    className="text-base sm:text-lg font-bold text-white hover:text-[#EFE4CA] transition-colors"
+                  >
+                    {COMPANY_INFO.emailGeneral}
+                  </a>
+                  <p className="text-xs text-slate-300 mt-0.5 font-normal">
+                    Direct boardroom routing to General Management
                   </p>
                 </div>
               </div>
