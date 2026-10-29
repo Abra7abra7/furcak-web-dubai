@@ -8,7 +8,73 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 <!-- END:nextjs-agent-rules -->
 
-# FURCAK Web Dubai — Frontend Design & Architectural System
+# AGENTS.md — FURCAK Web Dubai
+
+Instructions for any coding agent (Jules, OpenCode, Hermes, Grok Bot, Claude, Codex, …). Read the **Agent quick guide** first; the design-system reference follows below it. Also follow `.agents/rules/ponytail.md` (minimal-diff "lazy senior dev" rules).
+
+## Agent quick guide
+
+### Project
+
+- **Purpose:** corporate website of the client **FURCAK MARKETING MANAGEMENT – FZCO** (Dubai Silicon Oasis, founder Jan Furcak) — UAE market-entry and marketing advisory.
+- **Client owns** the domain `fmm-fzco.com`, its Cloudflare account settings and all texts. Built and maintained by Marián Stančík (GitHub `Abra7abra7`).
+- **Hosting:** Cloudflare (commits get a "Workers Builds: furcak-web-dubai" check, so PR branches get a preview build — open it from the PR checks). TODO: confirm the exact build/output settings in the Cloudflare dashboard (`DEPLOYMENT_NOTES.md` describes the original Pages setup).
+
+### Stack
+
+- Next.js 16 (App Router, Turbopack) · React 19 · TypeScript 5 · Tailwind CSS v4 · `lucide-react` · ESLint 9 (`eslint-config-next`).
+- Read the Next.js note at the very top of this file: APIs may differ from your training data.
+
+### Commands
+
+```bash
+npm ci             # package-lock.json is committed
+npm run dev        # http://localhost:3000
+npm run build      # must pass with zero TypeScript/route errors
+npm run lint       # eslint
+```
+
+There is **no automated test suite**. Minimum check = `npm run build` + `npm run lint` + visual check of the preview (desktop + mobile).
+
+### Structure
+
+```
+src/app/            # pages: /, /about, /approach, /contact, /industries, /leadership, /services (+ layout, globals.css)
+src/components/     # section components (Hero, About, Services, Industries, Approach, Leadership, Contact, Navbar, Footer, modals, WhatsAppWidget)
+src/lib/data.ts     # site content/data
+architecture-diagram.*    # architecture diagram + visual-check artefacts
+DEPLOYMENT_NOTES.md # go-live steps (Slovak)
+```
+
+### Conventions
+
+- Site language: **English** (`<html lang="en">`). Tone: institutional, senior advisory — follow the design direction below.
+- **Do not change the client's texts, contact details, licence data or legal texts** unless the task explicitly says so (see "Text & Content Preservation Guarantee" below).
+- Design tokens live in `src/app/globals.css`; reuse them instead of new colours.
+- Environment variables only via Cloudflare settings / `.env.local` (git-ignored). TODO: confirm whether `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` from `DEPLOYMENT_NOTES.md` is still used — section 8.3 below says the forms no longer use a third-party service.
+
+### Working rules (mandatory for every agent: Jules, OpenCode, Hermes, Grok Bot, Claude, Codex, …)
+
+- **Branch + Pull Request only.** Create a feature branch (`feat/…`, `fix/…`, `docs/…`, `seo/…`), open a PR and wait for review. **Never push or force-push to `main`/the default branch** and never merge your own PR.
+- **No secrets in git.** Never commit `.env*`, API keys, tokens, passwords, private keys, server IP addresses, SSH details or personal data. Use the hosting platform's environment variables; reference variables by **name only**. If you find a secret in the repo, stop and report it — do not copy it anywhere.
+- **GDPR / privacy first.** Treat any personal data (leads, customers, patients, form submissions) as confidential. No new trackers, cookies, analytics, third-party scripts or data processors without explicit approval; keep privacy/cookie pages consistent with what the code actually does.
+- **The client owns the domain, the content and the data.** Do not change DNS, domains, hosting settings, payment settings, legal texts or published client content without explicit approval.
+- **No destructive changes without approval.** No deleting pages/data/files in bulk, no history rewrites, no dependency major-version upgrades, no production deploys, no outgoing emails/posts from tests.
+- **Invent nothing.** If a fact (price, company detail, legal statement, metric) is not in the repo or the task, leave a `TODO: confirm` instead of guessing.
+- **Small, focused diffs.** Reuse existing patterns and dependencies; do not add a new dependency if an existing one covers the need.
+
+### Definition of Done
+
+1. All checks listed under *Commands* that exist for this repo pass locally (build, tests, lint/verification).
+2. The **preview deploy** of the PR branch was opened and checked (desktop + mobile) — or, if this repo has no preview, the reason is stated in the PR.
+3. The PR description contains: a short summary of *what* and *why*, the list of changed areas, how it was tested, the preview URL, and any `TODO: confirm` items or risks.
+4. Nothing goes live until Marián approves (**ÁNO**) and merges the PR.
+
+---
+
+# Design system & project reference
+
+## FURCAK Web Dubai — Frontend Design & Architectural System
 
 This document records the complete UI/UX overhaul implemented according to the `frontend-design` skill guidelines for **FURCAK MARKETING MANAGEMENT - FZCO**.
 
